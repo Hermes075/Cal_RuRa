@@ -23,6 +23,13 @@ class Calculatrice {
 			accumulateur.push(-accumulateur.peek()+operande.pop());
 		}
 	}
+	
+	public void multiplication (){
+		if (accumulateur.empty()){
+			accumulateur.push(operande.pop()*operande.pop());
+		}
+		else {
+			accumulateur.push(accumulateur.peek()*operande.pop());
+	}
 }
-
-
+}
