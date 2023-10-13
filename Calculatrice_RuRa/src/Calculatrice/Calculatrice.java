@@ -1,5 +1,6 @@
 package Calculatrice;
+import java.util.Stack;
 
 class Calculatrice {
-	//test1
+	Stack <Double> accumulateur = new Stack<>();
 }
