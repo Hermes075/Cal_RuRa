@@ -31,5 +31,23 @@ class Calculatrice {
 		else {
 			accumulateur.push(accumulateur.peek()*operande.pop());
 	}
-}
+	}
+	
+	public void division() {
+		if (accumulateur.empty()){
+			accumulateur.push((1/operande.pop())*operande.pop());
+		}
+		else {
+			accumulateur.push((1/accumulateur.peek())*operande.pop());
+	}
+	}
+	
+	public void opposition() {
+		if (accumulateur.empty()){
+			accumulateur.push(-operande.pop());
+		}
+		else {
+			accumulateur.push(-accumulateur.peek());
+	}
+	}
 }
