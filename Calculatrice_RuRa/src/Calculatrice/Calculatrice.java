@@ -1,53 +1,121 @@
 package Calculatrice;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
-class Calculatrice {
+public class Calculatrice {
 	Stack <Double> accumulateur = new Stack<>();
 	Stack <Double> operande = new Stack<>();
 	
-	public void addition () {
-		if (accumulateur.empty()) {
-			accumulateur.push(operande.pop()+operande.pop());
-		}
-		else {
-			accumulateur.push(accumulateur.peek()+operande.pop());
-		}
+	public void addition() {
+	    try {
+	        if (operande.size() >= 2) {
+	            Double operande2 = operande.pop();
+	            Double operande1 = operande.pop();
+	            Double resultat = operande1+operande2;
+	            operande.push(resultat);
+	            accumulateur.push(resultat);
+	        } else {
+	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
+	        }
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erreur d'addition : " + e.getMessage());
+	    }
 	}
+
+
 	
-	public void soustraction () {
-		if (accumulateur.empty()) {
-			accumulateur.push(-operande.pop()+operande.pop());
-		}
-		else {
-			accumulateur.push(-accumulateur.peek()+operande.pop());
-		}
+	public void soustraction() {
+	    try {
+	        if (operande.size() >= 2) {
+	            Double operande2 = operande.pop();
+	            Double operande1 = operande.pop();
+	            Double resultat = operande1-operande2;
+	            operande.push(resultat);
+	            accumulateur.push(resultat);
+	        } else {
+	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
+	        }
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erreur d'addition : " + e.getMessage());
+	    }
 	}
+
 	
-	public void multiplication (){
-		if (accumulateur.empty()){
-			accumulateur.push(operande.pop()*operande.pop());
-		}
-		else {
-			accumulateur.push(accumulateur.peek()*operande.pop());
-	}
+	public void multiplication() {
+	    try {
+	        if (operande.size() >= 2) {
+	            Double operande2 = operande.pop();
+	            Double operande1 = operande.pop();
+	            Double resultat = operande1*operande2;
+	            operande.push(resultat);
+	            accumulateur.push(resultat);
+	        } else {
+	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
+	        }
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erreur d'addition : " + e.getMessage());
+	    }
 	}
 	
 	public void division() {
-		if (accumulateur.empty()){
-			accumulateur.push((1/operande.pop())*operande.pop());
-		}
-		else {
-			accumulateur.push((1/accumulateur.peek())*operande.pop());
+	    try {
+	        if (operande.size() >= 2) {
+	            Double operande2 = operande.pop();
+	            Double operande1 = operande.pop();
+	            
+	            if (operande2 != 0) {
+	                Double resultat = operande1 / operande2;
+	                operande.push(resultat);
+	                accumulateur.push(resultat);
+	            } else {
+	                throw new ArithmeticException("Division par 0");
+	            }
+	        } else {
+	            throw new IllegalArgumentException("Pas assez d'opérandes pour la division.");
+	        }
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erreur de division : " + e.getMessage());
+	    } catch (ArithmeticException e) {
+	        System.err.println("Erreur de division : " + e.getMessage());
+	    }
 	}
-	}
+
 	
 	public void opposition() {
-		if (accumulateur.empty()){
-			accumulateur.push(-operande.pop());
-		}
-		else {
-			accumulateur.push(-accumulateur.peek());
+	    try {
+	        if (operande.empty()) {
+	            throw new EmptyStackException();
+	        } else {
+	            Double element = operande.pop();
+	            operande.push(-element);
+	            accumulateur.push(-element);
+	        }
+	    } catch (EmptyStackException e) {
+	        System.err.println("Erreur d'opposition : " + e.getMessage());
+	    }
 	}
+
+	
+	public void ajoutPile(Stack<Double> pile, Double element) {
+		pile.push(element);
 	}
+	
+	public Double elevePile(Stack<Double> pile ) {
+		return pile.pop();
+	}
+	
+	public void clearPile() {
+		accumulateur.clear();
+		operande.clear();
+	}
+	
 }
+
+
+
+
+
+
+
+
