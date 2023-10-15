@@ -22,8 +22,6 @@ public class Calculatrice {
 	        System.err.println("Erreur d'addition : " + e.getMessage());
 	    }
 	}
-
-
 	
 	public void soustraction() {
 	    try {
@@ -97,12 +95,12 @@ public class Calculatrice {
 	}
 
 	
-	public void ajoutPile(Stack<Double> pile, Double element) {
-		pile.push(element);
+	public void ajoutPile(Double element) {
+		operande.push(element);
 	}
 	
 	public Double elevePile(Stack<Double> pile ) {
-		return pile.pop();
+		return operande.pop();
 	}
 	
 	public void clearPile() {
