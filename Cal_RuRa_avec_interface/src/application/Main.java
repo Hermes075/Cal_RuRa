@@ -12,6 +12,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.control.Label;
 
 public class Main extends Application {
+	// Créez une instance de SampleController
+    SampleController controller = new SampleController();
+    
     // Texte en haut de la caulatrice
 	private Label ecranLabel;
 
@@ -49,7 +52,7 @@ public class Main extends Application {
         // Gestionnaire d'événements pour chaque bouton
         for (int i = 0; i < buttons.length; i++) {
             final int buttonIndex = i;
-            buttons[i].setOnAction(e -> handleButtonClick(buttonIndex));
+            buttons[i].setOnAction(e -> controller.handleButtonClick(buttonIndex));
         }
 
         return borderPane;
@@ -70,14 +73,5 @@ public class Main extends Application {
         }
 
         return buttons;
-    }
-
-    public void handleButtonClick(int buttonIndex) {
-
-        //utilisation de boutton
-        if (buttonIndex == 4) {
-            // Exemple : Le bouton "AC" (effacer tout) a été cliqué
-        ecranLabel.setText("0");
-        }
     }
 }
