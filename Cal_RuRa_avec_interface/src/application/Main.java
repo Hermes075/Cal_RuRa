@@ -7,10 +7,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.control.Label;
 
 public class Main extends Application {
     // Texte en haut de la caulatrice
-    private TextArea displayText;
+	private Label ecranLabel;
 
     public static void main(String[] args) {
         launch(args);
@@ -28,9 +31,10 @@ public class Main extends Application {
 
     private BorderPane createCalculatorLayout() {
         BorderPane borderPane = new BorderPane();
-        displayText = new TextArea("ce qui sera affiché");
-        displayText.setPrefHeight(200);
-        borderPane.setTop(displayText);
+        ecranLabel = new Label("ce qui sera affiché"); // Créer un Label
+        ecranLabel.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+        ecranLabel.setPrefHeight(200);
+        borderPane.setTop(ecranLabel); 
 
         GridPane gridPane = new GridPane();
         borderPane.setCenter(gridPane);
@@ -68,12 +72,12 @@ public class Main extends Application {
         return buttons;
     }
 
-    private void handleButtonClick(int buttonIndex) {
+    public void handleButtonClick(int buttonIndex) {
 
         //utilisation de boutton
         if (buttonIndex == 4) {
             // Exemple : Le bouton "AC" (effacer tout) a été cliqué
-            displayText.setText("0");
+        ecranLabel.setText("0");
         }
     }
 }
