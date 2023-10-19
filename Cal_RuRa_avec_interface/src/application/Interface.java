@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -21,15 +20,14 @@ public class Interface extends Application {
 	private Label ecranLabel;
 
     public static void main(String[] args) {
-    	
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
     	//association avec le controller 
-    	controller = new SampleController();
-    	controller.setInterface(this);
+    	controller = new SampleController(); // on crée le controlleur pour la premiere fois
+    	controller.setInterface(this); // cette controller sera associée à cette interface
     	
         BorderPane root = createCalculatorLayout();
 
@@ -51,10 +49,10 @@ public class Interface extends Application {
 
         // Création des boutons et ajout des gestionnaires d'événements
         Button[] buttons = createAndSetupButtons();
-        gridPane.addColumn(0, buttons[0], buttons[1], buttons[2], buttons[3], buttons[0]);
-        gridPane.addColumn(1, buttons[9], buttons[8], buttons[7], buttons[6], buttons[5]);
-        gridPane.addColumn(2, buttons[14], buttons[13], buttons[12], buttons[11], buttons[10]);
-        gridPane.addColumn(3, buttons[19], buttons[18], buttons[17], buttons[16], buttons[15]);
+        gridPane.addColumn(0, buttons[19], buttons[7], buttons[4], buttons[1], buttons[0]);
+        gridPane.addColumn(1, buttons[13], buttons[8], buttons[5], buttons[2], buttons[11]);
+        gridPane.addColumn(2, buttons[12], buttons[9], buttons[6], buttons[3], buttons[10]);
+        gridPane.addColumn(3, buttons[17], buttons[16], buttons[15], buttons[14], buttons[18]);
 
         // Gestionnaire d'événements pour chaque bouton
         for (int i = 0; i < buttons.length; i++) {
