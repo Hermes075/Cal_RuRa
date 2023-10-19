@@ -74,4 +74,13 @@ public class Main extends Application {
 
         return buttons;
     }
+    
+    // Méthode pour changer l'affichage sur l'écran
+    public void setEcranText(String texte) {
+        ecranLabel.setText(texte);
+    }
+    
+    public String getEcranText() {
+        return ecranLabel.getText();
+    }
 }
