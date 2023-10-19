@@ -7,6 +7,9 @@ public class CalculatriceModel {
 	Stack <Double> accumulateur = new Stack<>();
 	Stack <Double> operande = new Stack<>();
 	Double enCours=(double) 0;
+	Boolean saisieApresVirgule = false;
+	Integer compteurApresVirgule = 0;
+	Boolean enCoursPositif = true;
 	
 	public void addition() {
 	    try {
@@ -15,6 +18,7 @@ public class CalculatriceModel {
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1+operande2;
 	            operande.push(resultat);
+	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
@@ -31,6 +35,7 @@ public class CalculatriceModel {
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1-operande2;
 	            operande.push(resultat);
+	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
@@ -48,6 +53,7 @@ public class CalculatriceModel {
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1*operande2;
 	            operande.push(resultat);
+	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
@@ -66,6 +72,7 @@ public class CalculatriceModel {
 	            if (operande2 != 0) {
 	                Double resultat = operande1 / operande2;
 	                operande.push(resultat);
+	                accumulateur.clear();
 	                accumulateur.push(resultat);
 	            } else {
 	                throw new ArithmeticException("Division par 0");
@@ -120,11 +127,31 @@ public class CalculatriceModel {
 	}
 	
 	public void ajoutEnCours(Double element) {
-		enCours = 10*enCours + element;
+		if (saisieApresVirgule == false) {
+			enCours = 10*enCours + element;
+		}
+		else {
+			// Calculer la puissance de 10 nécessaire pour le nouvel élément
+	        double puissance = Math.pow(10, -String.valueOf(element).length() + 2 - compteurApresVirgule);
+
+	        // Ajouter l'élément après la virgule en le divisant par la puissance de 10 en vérifiant le signe
+	        if (enCoursPositif == true) {
+	        	enCours += element * puissance;
+	        }
+	        else {
+	        	enCours -= element * puissance;
+	        }
+	        compteurApresVirgule ++;
+		}
 	}
 	
 	public void clearEnCours() {
 		enCours = (double) 0;
+	}
+	
+	public void inverseEnCours() {
+		enCours = - enCours;
+		enCoursPositif = !enCoursPositif;
 	}
 	
 	public Double getResultat() {
@@ -135,7 +162,29 @@ public class CalculatriceModel {
 	    return resultat;
 	}
 	
+	public Boolean getBoolean(){
+		return saisieApresVirgule;	
+	}
 	
+	public void inverserBoolean(){
+		saisieApresVirgule = !saisieApresVirgule;	
+	}
+	
+	public void reinitBoolean() {
+		saisieApresVirgule = false;
+	}
+	
+	public void reinitCompteur() {
+		compteurApresVirgule = 0;
+	}
+	
+	public void reinitBoolPositif() {
+		enCoursPositif = true;
+	}
+	
+	public void enCoursPourcent(){
+		enCours =  enCours/100;
+	}
 }
 
 

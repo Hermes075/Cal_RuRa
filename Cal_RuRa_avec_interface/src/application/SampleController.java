@@ -25,6 +25,7 @@ public class SampleController {
 	    List<Integer> indexChiffres = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 	    for (int index : indexChiffres) {
 	        if (index == buttonIndex) {
+	        	//Vérification du mode de la calculatrice
 	            calculatrice.ajoutEnCours(Double.valueOf(index));
 	            interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
 	        }
@@ -40,11 +41,40 @@ public class SampleController {
 	        calculatrice.ajoutPile(calculatrice.getEnCours());
 	        calculatrice.clearEnCours();
 	        interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	        calculatrice.reinitBoolean();
+	        calculatrice.reinitCompteur();
+	        calculatrice.reinitBoolPositif();
 	    }
+	    
+	    // Pour le bouton AC
+	    if (buttonIndex == 19) {
+	    	calculatrice.clearPile();
+	    	calculatrice.clearEnCours();
+	        interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    }
+	    
+	    //Pour le bouton +/-
+	    if (buttonIndex == 13) {
+	    	calculatrice.inverseEnCours();
+	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    }
+	    
+	    //Bouton .
+	    if (buttonIndex == 11) {
+	    	calculatrice.inverserBoolean();
+	    }
+	    
+	    //Bouton %
+	    if (buttonIndex == 12) {
+	    	calculatrice.enCoursPourcent();
+	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    }
+	    
 
 	    System.out.println("Bouton pressé : " + buttonIndex);
 	}
-
+	
+	//Permet de ne pas répéter les mêmes lignes de code pour chaque opération
 	private void effectuerOperationSelonIndex(int buttonIndex) {
 	    switch (buttonIndex) {
 	        case 14:
