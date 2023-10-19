@@ -81,7 +81,7 @@ public class Interface extends Application {
     }
     
     // mettre à jour le label
-    public void updateLabel(String value) {
-        ecranLabel.setText(value);;
+    public void updateLabel(Double value) {
+        ecranLabel.setText(value.toString()); 
     }
 }

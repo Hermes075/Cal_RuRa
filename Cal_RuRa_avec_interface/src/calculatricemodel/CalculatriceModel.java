@@ -6,7 +6,7 @@ import java.util.Stack;
 public class CalculatriceModel {
 	Stack <Double> accumulateur = new Stack<>();
 	Stack <Double> operande = new Stack<>();
-	String enCours="";
+	Double enCours=(double) 0;
 	
 	public void addition() {
 	    try {
@@ -115,20 +115,29 @@ public class CalculatriceModel {
 	}
 	
 	
-	public String getEnCours() {
+	public Double getEnCours() {
 		return enCours;
 	}
 	
-	public void ajoutEnCours(String element) {
-		enCours +=element;
+	public void ajoutEnCours(Double element) {
+		enCours = 10*enCours + element;
 	}
 	
-	public void clearEncours() {
-		enCours = "";
+	public void clearEnCours() {
+		enCours = (double) 0;
+	}
+	
+	public Double getResultat() {
+		Double resultat = 0.0;
+	    for (Double operation : accumulateur) {
+	        resultat += operation;
+	    }
+	    return resultat;
 	}
 	
 	
 }
+
 
 
 
