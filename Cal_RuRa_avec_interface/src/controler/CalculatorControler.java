@@ -5,16 +5,16 @@ import java.util.EmptyStackException;
 import java.util.List;
 
 import model.CalculatorModel;
-import view.CalculatorInterface;
+import view.CalculatorGUI;
 
 
 public class CalculatorControler {
 	// on c
-	private CalculatorInterface interfaceCalculatrice; // c'est l'interface graphique de la calculatrice
+	private CalculatorGUI interfaceCalculatrice; // c'est l'interface graphique de la calculatrice
 	private CalculatorModel calculatrice; // c'est la calculatrice ( qui fera les calculs )
 		
 	// on fait ici une association avec l'interface
-	public void setInterface(CalculatorInterface app) {
+	public void setInterface(CalculatorGUI app) {
         this.interfaceCalculatrice = app;
     }
 	

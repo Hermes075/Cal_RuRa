@@ -18,7 +18,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.control.Label;
 
-public class CalculatorInterface extends Application{
+public class CalculatorGUI extends Application{
 	
 	
 	// Créez une instance de SampleController
