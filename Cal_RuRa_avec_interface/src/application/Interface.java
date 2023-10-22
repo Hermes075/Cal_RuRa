@@ -17,7 +17,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.control.Label;
 
-public class Interface extends Application {
+public class Interface extends Application{
 	
 	
 	// Créez une instance de SampleController

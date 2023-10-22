@@ -38,21 +38,13 @@ public class SampleController {
 	        effectuerOperationSelonIndex(buttonIndex);
 	    }
 
-	    // Pour le bouton RR
 	    if (buttonIndex == 18) {
-	        calculatrice.ajoutPile(calculatrice.getEnCours());
-	        calculatrice.clearEnCours();
-	        interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
-	        calculatrice.reinitBoolean();
-	        calculatrice.reinitCompteur();
-	        calculatrice.reinitBoolPositif();
+	        handleRROrAC(false); // Ne pas effacer la pile
 	    }
-	    
+
 	    // Pour le bouton AC
 	    if (buttonIndex == 19) {
-	    	calculatrice.clearPile();
-	    	calculatrice.clearEnCours();
-	        interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	        handleRROrAC(true); // Effacer la pile
 	    }
 	    
 	    //Pour le bouton +/-
@@ -105,5 +97,18 @@ public class SampleController {
 	        interfaceCalculatrice.messageErreur(e.getMessage());
 	    }
 	    
+	}
+	
+	private void handleRROrAC(boolean clearPile) {
+	    calculatrice.ajoutPile(calculatrice.getEnCours());
+	    calculatrice.clearEnCours();
+	    interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    calculatrice.reinitBoolean();
+	    calculatrice.reinitCompteur();
+	    calculatrice.reinitBoolPositif();
+
+	    if (clearPile) {
+	        calculatrice.clearPile();
+	    }
 	}
 }
