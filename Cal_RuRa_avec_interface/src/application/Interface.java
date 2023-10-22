@@ -1,13 +1,20 @@
 package application;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.scene.control.Label;
 
 public class Interface extends Application {
@@ -39,7 +46,7 @@ public class Interface extends Application {
 
     private BorderPane createCalculatorLayout() {
         BorderPane borderPane = new BorderPane();
-        ecranLabel = new Label("ce qui sera affiché"); // Créer un Label
+        ecranLabel = new Label("0.0"); // Créer un Label
         ecranLabel.setFont(Font.font("Arial", FontWeight.BOLD, 40));
         ecranLabel.setPrefHeight(200);
         borderPane.setTop(ecranLabel); 
@@ -82,6 +89,61 @@ public class Interface extends Application {
     
     // mettre à jour le label
     public void updateLabel(Double value) {
-        ecranLabel.setText(value.toString()); 
+        ecranLabel.setText(value.toString());
     }
+    
+    
+    
+    public void messageErreur(String message) {
+        // Créer une nouvelle fenêtre de dialogue
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(ecranLabel.getScene().getWindow());
+        dialogStage.setTitle("Attention Erreur");
+
+        // Créer un TextFlow pour afficher le texte
+        TextFlow textFlow = new TextFlow();
+        textFlow.setPrefSize(400, 130); 
+        textFlow.setTextAlignment(TextAlignment.CENTER); // Centrer le texte
+
+        // Séparer le message en lignes
+        String[] lines = message.split("\n");
+
+        // Créer un Text pour chaque ligne du message
+        for (String line : lines) {
+            Text text = new Text(line);
+            text.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+            text.setFill(Color.BLACK); // Couleur du texte
+            textFlow.getChildren().add(text);
+
+            // Ajouter un saut de ligne après chaque ligne du message
+            textFlow.getChildren().add(new Text("\n"));
+        }
+
+        // Créer un bouton "AC" pour réinitialiser
+        Button resetButton = new Button("AC");
+        resetButton.setMaxWidth(Double.MAX_VALUE); // Définir la largeur maximale
+        resetButton.setPrefHeight(50); // Définir la hauteur
+
+        resetButton.setOnAction(e -> {
+            // Réinitialiser la fenêtre principale et la mémoire de la calculatrice
+            controller.handleButtonClick(19);
+            // Fermer la fenêtre de dialogue
+            dialogStage.close();
+        });
+
+        VBox vbox = new VBox(textFlow, resetButton);
+        vbox.setAlignment(Pos.CENTER); // Centrer le contenu dans la VBox
+        vbox.setSpacing(100); // Espacement entre les éléments
+
+        Scene dialogScene = new Scene(vbox); 
+        dialogStage.setScene(dialogScene);
+        dialogStage.showAndWait();
+    }
+
+
+
+
 }
+
+

@@ -2,6 +2,7 @@ package application;
 
 import calculatricemodel.CalculatriceModel;
 import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.List;
 
 
@@ -21,6 +22,7 @@ public class SampleController {
 	
 	
 	public void handleButtonClick(int buttonIndex) {
+		
 	    // Liste des index correspondants aux chiffres sur l'interface
 	    List<Integer> indexChiffres = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 	    for (int index : indexChiffres) {
@@ -72,11 +74,13 @@ public class SampleController {
 	    
 
 	    System.out.println("Bouton pressé : " + buttonIndex);
+	     
 	}
 	
 	//Permet de ne pas répéter les mêmes lignes de code pour chaque opération
 	private void effectuerOperationSelonIndex(int buttonIndex) {
-	    switch (buttonIndex) {
+	    try {
+		switch (buttonIndex) {
 	        case 14:
 	            calculatrice.addition();
 	            break;
@@ -92,5 +96,14 @@ public class SampleController {
 	    }
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());
+	    }catch (EmptyStackException e) {
+	        interfaceCalculatrice.messageErreur(e.getMessage());
+	    } catch (IllegalArgumentException e) {
+	        interfaceCalculatrice.messageErreur(e.getMessage());
+	    }
+	    catch (ArithmeticException e) {
+	        interfaceCalculatrice.messageErreur(e.getMessage());
+	    }
+	    
 	}
 }

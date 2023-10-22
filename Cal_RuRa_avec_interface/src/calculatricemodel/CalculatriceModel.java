@@ -12,7 +12,6 @@ public class CalculatriceModel {
 	Boolean enCoursPositif = true;
 	
 	public void addition() {
-	    try {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
@@ -23,13 +22,9 @@ public class CalculatriceModel {
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
 	        }
-	    } catch (IllegalArgumentException e) {
-	        System.err.println("Erreur d'addition : " + e.getMessage());
-	    }
 	}
 	
 	public void soustraction() {
-	    try {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
@@ -38,16 +33,12 @@ public class CalculatriceModel {
 	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
-	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
+	            throw new IllegalArgumentException("Pas assez d'opérandes pour la soustraction.");
 	        }
-	    } catch (IllegalArgumentException e) {
-	        System.err.println("Erreur d'addition : " + e.getMessage());
-	    }
 	}
 
 	
 	public void multiplication() {
-	    try {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
@@ -56,15 +47,11 @@ public class CalculatriceModel {
 	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
-	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
+	            throw new IllegalArgumentException("Pas assez d'opérandes pour la multiplication.");
 	        }
-	    } catch (IllegalArgumentException e) {
-	        System.err.println("Erreur d'addition : " + e.getMessage());
-	    }
 	}
 	
 	public void division() {
-	    try {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
@@ -75,16 +62,11 @@ public class CalculatriceModel {
 	                accumulateur.clear();
 	                accumulateur.push(resultat);
 	            } else {
-	                throw new ArithmeticException("Division par 0");
+	                throw new ArithmeticException("Atention : Division par 0");
 	            }
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la division.");
 	        }
-	    } catch (IllegalArgumentException e) {
-	        System.err.println("Erreur de division : " + e.getMessage());
-	    } catch (ArithmeticException e) {
-	        System.err.println("Erreur de division : " + e.getMessage());
-	    }
 	}
 
 	
