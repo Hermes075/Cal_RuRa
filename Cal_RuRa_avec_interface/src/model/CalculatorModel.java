@@ -1,9 +1,9 @@
-package calculatricemodel;
+package model;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
 
-public class CalculatriceModel {
+public class CalculatorModel {
 	Stack <Double> accumulateur = new Stack<>();
 	Stack <Double> operande = new Stack<>();
 	Double enCours=(double) 0;

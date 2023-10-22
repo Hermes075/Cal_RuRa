@@ -1,23 +1,25 @@
-package application;
+package controler;
 
-import calculatricemodel.CalculatriceModel;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.List;
 
+import model.CalculatorModel;
+import view.CalculatorInterface;
 
-public class SampleController {
+
+public class CalculatorControler {
 	// on c
-	private Interface interfaceCalculatrice; // c'est l'interface graphique de la calculatrice
-	private CalculatriceModel calculatrice; // c'est la calculatrice ( qui fera les calculs )
+	private CalculatorInterface interfaceCalculatrice; // c'est l'interface graphique de la calculatrice
+	private CalculatorModel calculatrice; // c'est la calculatrice ( qui fera les calculs )
 		
 	// on fait ici une association avec l'interface
-	public void setInterface(Interface app) {
+	public void setInterface(CalculatorInterface app) {
         this.interfaceCalculatrice = app;
     }
 	
-	public SampleController () {
-		calculatrice = new CalculatriceModel(); // on crée une calculatrice quand on lance pour la premiere fois
+	public CalculatorControler () {
+		calculatrice = new CalculatorModel(); // on crée une calculatrice quand on lance pour la premiere fois
 	}
 	
 	

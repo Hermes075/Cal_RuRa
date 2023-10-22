@@ -1,5 +1,6 @@
-package application;
+package view;
 
+import controler.CalculatorControler;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Modality;
@@ -17,11 +18,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.control.Label;
 
-public class Interface extends Application{
+public class CalculatorInterface extends Application{
 	
 	
 	// Créez une instance de SampleController
-	private SampleController controller;
+	private CalculatorControler controller;
 	
     // Texte en haut de la caulatrice
 	private Label ecranLabel;
@@ -33,7 +34,7 @@ public class Interface extends Application{
     @Override
     public void start(Stage primaryStage) {
     	//association avec le controller 
-    	controller = new SampleController(); // on crée le controlleur pour la premiere fois
+    	controller = new CalculatorControler(); // on crée le controlleur pour la premiere fois
     	controller.setInterface(this); // cette controller sera associée à cette interface
     	
         BorderPane root = createCalculatorLayout();

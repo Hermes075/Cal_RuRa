@@ -1,4 +1,4 @@
-package application;
+package view;
 
 public interface CalculatorGUIInterface {
 	public void affiche();
