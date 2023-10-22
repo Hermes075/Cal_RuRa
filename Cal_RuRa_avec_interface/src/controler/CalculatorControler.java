@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.List;
 
+import javafx.scene.control.Button;
 import model.CalculatorModel;
 import view.CalculatorGUI;
 
@@ -18,9 +19,25 @@ public class CalculatorControler {
         this.interfaceCalculatrice = app;
     }
 	
-	public CalculatorControler () {
+	public CalculatorControler (CalculatorGUI interfaceCalculatrice) {
 		calculatrice = new CalculatorModel(); // on crée une calculatrice quand on lance pour la premiere fois
+		this.interfaceCalculatrice = interfaceCalculatrice;
+		Button[] buttons = this.interfaceCalculatrice.getButtons();
+		// Gestionnaire d'événements pour chaque bouton
+        for (int i = 0; i < buttons.length; i++) {
+            final int buttonIndex = i;
+            buttons[i].setOnAction(e -> handleButtonClick(buttonIndex));
+        }
+
+        this.interfaceCalculatrice.getResetButton().setOnAction(e -> {
+            // Réinitialiser la fenêtre principale et la mémoire de la calculatrice
+            handleButtonClick(19);
+            // Fermer la fenêtre de dialogue
+            this.interfaceCalculatrice.getDialogStage().close();
+        });
+
 	}
+	
 	
 	
 	public void handleButtonClick(int buttonIndex) {
