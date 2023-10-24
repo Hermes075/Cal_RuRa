@@ -16,13 +16,7 @@ public interface CalculatorModelInterface {
 	public Double getEnCours();
 	public void ajoutEnCours(Double element);
 	public void clearEnCours();
-	public void inverseEnCours();
-	public Double getResultat();
-	public Boolean getBoolean();
-	public void inverserBoolean();
-	public void reinitBoolean();
-	public void reinitCompteur();
-	public void reinitBoolPositif();
-	public void enCoursPourcent();
+
+
 
 }
