@@ -77,12 +77,6 @@ public class CalculatorControler {
 	    	calculatrice.inverserBoolean();
 	    }
 	    
-	    //Bouton %
-	    if (buttonIndex == 12) {
-	    	calculatrice.enCoursPourcent();
-	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
-	    }
-	    
 
 	    System.out.println("Bouton pressé : " + buttonIndex);
 	     
@@ -104,6 +98,9 @@ public class CalculatorControler {
 	        case 17:
 	            calculatrice.division();
 	            break;
+	        case 12:
+	        	calculatrice.swap();
+	        	break;
 	    }
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());

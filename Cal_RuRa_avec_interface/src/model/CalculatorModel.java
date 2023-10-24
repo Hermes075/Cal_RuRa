@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class CalculatorModel implements CalculatorModelInterface{
 	Stack <Double> accumulateur = new Stack<>();
-	Stack <Double> operande = new Stack<>();
+	public Stack <Double> operande = new Stack<>();
 	Double enCours=(double) 0;
 	Boolean saisieApresVirgule = false;
 	Integer compteurApresVirgule = 0;
@@ -164,9 +164,21 @@ public class CalculatorModel implements CalculatorModelInterface{
 		enCoursPositif = true;
 	}
 	
-	public void enCoursPourcent(){
-		enCours =  enCours/100;
+	public void swap(){
+		if (operande.size()>1){
+		Double operande1 = operande.pop();
+        Double operande2 = operande.pop();
+        operande.add(operande1);
+        operande.add(operande2);}
+		else {
+			throw new IllegalArgumentException("Pas assez d'opérandes pour la swap");	
+		}
 	}
+
+	public Double peek2() {
+		return accumulateur.peek();
+	}
+	
 }
 
 
