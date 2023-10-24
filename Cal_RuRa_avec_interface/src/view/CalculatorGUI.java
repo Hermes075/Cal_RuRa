@@ -16,7 +16,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.control.Label;
 
-public class CalculatorGUI extends Scene{
+public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
 	private Button[] buttons;
 	private Button resetButton;
