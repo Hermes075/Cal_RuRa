@@ -3,7 +3,7 @@ package model;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
-public class CalculatorModel {
+public class CalculatorModel implements CalculatorModelInterface{
 	Stack <Double> accumulateur = new Stack<>();
 	Stack <Double> operande = new Stack<>();
 	Double enCours=(double) 0;
