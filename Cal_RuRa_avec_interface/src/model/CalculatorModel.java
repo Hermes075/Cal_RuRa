@@ -136,11 +136,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 	public Double getResultat() {
-		Double resultat = 0.0;
-	    for (Double operation : accumulateur) {
-	        resultat += operation;
-	    }
-	    return resultat;
+		return accumulateur.peek();
 	}
 	
 	public Boolean getBoolean(){
