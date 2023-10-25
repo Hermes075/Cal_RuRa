@@ -70,6 +70,8 @@ public class CalculatorControler {
 	    if (buttonIndex == 13) {
 	    	calculatrice.inverseEnCours();
 	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+		    String historique = calculatrice.getOperandeAsString();
+	        interfaceCalculatrice.updateHistory(historique);
 	    }
 	    
 	    //Bouton .
@@ -77,9 +79,12 @@ public class CalculatorControler {
 	    	calculatrice.inverserBoolean();
 	    }
 	    
-	    //Bouton %
+	    //Bouton SWAP
 	    if (buttonIndex == 12) {
+	    	calculatrice.swap();
 	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+		    String historique = calculatrice.getOperandeAsString();
+	        interfaceCalculatrice.updateHistory(historique);
 	    } 
 	}
 	
