@@ -24,6 +24,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	
     // Texte en haut de la caulatrice
 	private Label ecranLabel;
+	private Label historyLabel;
 	
 	public CalculatorGUI() {
 		super(new BorderPane(), 400, 400); // Appel au constructeur de la classe mère (Scene) avec une instance de BorderPane et les dimensions    
@@ -35,6 +36,10 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     	dialogStage = new Stage();
 		// Associe le layout à la racine de la scène
 		((BorderPane) getRoot()).setCenter(root);
+        historyLabel = new Label("Historique : ");
+        historyLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
+        historyLabel.setAlignment(Pos.CENTER);
+        ((BorderPane) getRoot()).setTop(historyLabel);
 	}
 
     private BorderPane createCalculatorLayout() {
@@ -124,6 +129,10 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     }
     public Stage getDialogStage(){
     	return dialogStage;
+    }
+    
+    public void updateHistory(String history) {
+        historyLabel.setText("Historique : " + history);
     }
 }
 

@@ -81,11 +81,7 @@ public class CalculatorControler {
 	    if (buttonIndex == 12) {
 	    	calculatrice.enCoursPourcent();
 	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
-	    }
-	    
-
-	    System.out.println("Bouton pressé : " + buttonIndex);
-	     
+	    } 
 	}
 	
 	//Permet de ne pas répéter les mêmes lignes de code pour chaque opération
@@ -107,6 +103,8 @@ public class CalculatorControler {
 	    }
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());
+	    String historique = calculatrice.getOperandeAsString();
+        interfaceCalculatrice.updateHistory(historique);
 	    }catch (EmptyStackException e) {
 	        interfaceCalculatrice.messageErreur(e.getMessage());
 	    } catch (IllegalArgumentException e) {
@@ -129,5 +127,7 @@ public class CalculatorControler {
 	    if (clearPile) {
 	        calculatrice.clearPile();
 	    }
+	    String historique = calculatrice.getOperandeAsString();
+        interfaceCalculatrice.updateHistory(historique);
 	}
 }

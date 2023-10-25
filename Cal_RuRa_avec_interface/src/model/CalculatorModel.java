@@ -167,13 +167,13 @@ public class CalculatorModel implements CalculatorModelInterface{
 	public void enCoursPourcent(){
 		enCours =  enCours/100;
 	}
+	
+	public String getOperandeAsString() {
+	    StringBuilder builder = new StringBuilder();
+	    for (Double value : operande) {
+	        builder.append(value);
+	        builder.append("; ");
+	    }
+	    return builder.toString();
+	}
 }
-
-
-
-
-
-
-
-
-
