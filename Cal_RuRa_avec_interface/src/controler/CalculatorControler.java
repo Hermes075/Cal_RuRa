@@ -77,11 +77,17 @@ public class CalculatorControler {
 	    	calculatrice.inverserBoolean();
 	    }
 	    
+<<<<<<< HEAD
 	    //Bouton %
 	    if (buttonIndex == 12) {
 	    	calculatrice.enCoursPourcent();
 	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
 	    } 
+=======
+
+	    System.out.println("Bouton pressé : " + buttonIndex);
+	     
+>>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
 	}
 	
 	//Permet de ne pas répéter les mêmes lignes de code pour chaque opération
@@ -100,6 +106,9 @@ public class CalculatorControler {
 	        case 17:
 	            calculatrice.division();
 	            break;
+	        case 12:
+	        	calculatrice.swap();
+	        	break;
 	    }
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());

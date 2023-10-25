@@ -16,7 +16,7 @@ public interface CalculatorModelInterface {
 	public Double getEnCours();
 	public void ajoutEnCours(Double element);
 	public void clearEnCours();
-
+	public void swap();
 
 
 }
