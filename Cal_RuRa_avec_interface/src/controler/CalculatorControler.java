@@ -49,21 +49,25 @@ public class CalculatorControler {
 	        	//Vérification du mode de la calculatrice
 	            calculatrice.ajoutEnCours(Double.valueOf(index));
 	            interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	            interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	        }
 	    }
 
 	    // Si l'index est dans la plage des opérations
 	    if (buttonIndex >= 14 && buttonIndex <= 17) {
 	        effectuerOperationSelonIndex(buttonIndex);
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 
 	    if (buttonIndex == 18) {
-	        handleRROrAC(false); // Ne pas effacer la pile
+	        handleRROrAC(false);
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());// Ne pas effacer la pile
 	    }
 
 	    // Pour le bouton AC
 	    if (buttonIndex == 19) {
-	        handleRROrAC(true); // Effacer la pile
+	        handleRROrAC(true);
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());// Effacer la pile
 	    }
 	    
 	    //Pour le bouton +/-
@@ -72,11 +76,13 @@ public class CalculatorControler {
 	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
 		    String historique = calculatrice.getOperandeAsString();
 	        interfaceCalculatrice.updateHistory(historique);
+	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    //Bouton .
 	    if (buttonIndex == 11) {
 	    	calculatrice.inverserBoolean();
+	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    //Bouton SWAP
@@ -112,6 +118,7 @@ public class CalculatorControler {
 	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());
 	    String historique = calculatrice.getOperandeAsString();
         interfaceCalculatrice.updateHistory(historique);
+	    interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }catch (EmptyStackException e) {
 	        interfaceCalculatrice.messageErreur(e.getMessage());
 	    } catch (IllegalArgumentException e) {
