@@ -174,7 +174,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 			throw new IllegalArgumentException("Pas assez d'opérandes pour la swap");	
 		}
 	}
-<<<<<<< HEAD
 	
 	public String getOperandeAsString() {
 	    StringBuilder builder = new StringBuilder();
@@ -184,8 +183,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    }
 	    return builder.toString();
 	}
-}
-=======
+
 
 	public Double peek2() {
 		return accumulateur.peek();
@@ -197,8 +195,3 @@ public class CalculatorModel implements CalculatorModelInterface{
 
 
 
-
-
-
-
->>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
