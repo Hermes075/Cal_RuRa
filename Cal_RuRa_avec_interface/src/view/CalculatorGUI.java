@@ -1,5 +1,7 @@
 package view;
 
+import java.util.List;
+
 import javafx.geometry.Pos;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,6 +26,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	
     // Texte en haut de la caulatrice
 	private Label ecranLabel;
+	private Label ecranHistorique;
 	
 	public CalculatorGUI() {
 		super(new BorderPane(), 400, 400); // Appel au constructeur de la classe mère (Scene) avec une instance de BorderPane et les dimensions    
@@ -44,6 +47,12 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         ecranLabel.setPrefHeight(200);
         borderPane.setTop(ecranLabel); 
 
+     // Ajout de l'écran Historique au-dessus de l'écran Label
+        ecranHistorique = new Label("fqsfc"); // Créer un Label pour l'historique
+        ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        ecranHistorique.setTextAlignment(TextAlignment.CENTER);
+        borderPane.setRight(ecranHistorique);
+        
         GridPane gridPane = new GridPane();
         borderPane.setCenter(gridPane);
 
@@ -78,6 +87,17 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     public void updateLabel(Double value) {
         ecranLabel.setText(value.toString());
     }
+    
+    public void updateHistorique(List<Double> historique) {
+        StringBuilder historiqueText = new StringBuilder();
+
+        for (Double valeur : historique) {
+            historiqueText.append(valeur).append("\n");
+        }
+
+        ecranHistorique.setText(historiqueText.toString());
+    }
+
     
     
     

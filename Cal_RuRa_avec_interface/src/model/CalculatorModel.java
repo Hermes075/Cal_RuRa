@@ -1,6 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EmptyStackException;
+import java.util.List;
 import java.util.Stack;
 
 public class CalculatorModel implements CalculatorModelInterface{
@@ -17,7 +20,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1+operande2;
 	            operande.push(resultat);
-	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
@@ -30,7 +32,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1-operande2;
 	            operande.push(resultat);
-	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la soustraction.");
@@ -44,7 +45,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1*operande2;
 	            operande.push(resultat);
-	            accumulateur.clear();
 	            accumulateur.push(resultat);
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la multiplication.");
@@ -59,7 +59,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            if (operande2 != 0) {
 	                Double resultat = operande1 / operande2;
 	                operande.push(resultat);
-	                accumulateur.clear();
 	                accumulateur.push(resultat);
 	            } else {
 	                throw new ArithmeticException("Atention : Division par 0");
@@ -175,9 +174,26 @@ public class CalculatorModel implements CalculatorModelInterface{
 		}
 	}
 
-	public Double peek2() {
-		return accumulateur.peek();
+	public List<Double> peek3() {
+	    int accumulateurSize = accumulateur.size();
+	    List<Double> lastThreeValues = new ArrayList<>();
+
+	    // Ajouter des zéros pour remplir la liste si elle contient moins de 3 éléments
+	    while (lastThreeValues.size() < 5) {
+	        if (accumulateurSize > 0) {
+	            lastThreeValues.add(accumulateur.get(accumulateurSize - 1));
+	            accumulateurSize--;
+	        } else {
+	            lastThreeValues.add(0.0); // Ajouter un zéro
+	        }
+	    }
+
+	    // Inverser la liste pour obtenir les valeurs dans l'ordre correct
+	    Collections.reverse(lastThreeValues);
+	    return lastThreeValues;
 	}
+
+
 	
 }
 
