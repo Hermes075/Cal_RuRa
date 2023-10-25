@@ -53,7 +53,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         borderPane.setTop(ecranLabel); 
 
      // Ajout de l'écran Historique au-dessus de l'écran Label
-        ecranHistorique = new Label("fqsfc"); // Créer un Label pour l'historique
+        ecranHistorique = new Label("0.0"); // Créer un Label pour l'historique
         ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         ecranHistorique.setTextAlignment(TextAlignment.CENTER);
         borderPane.setRight(ecranHistorique);
