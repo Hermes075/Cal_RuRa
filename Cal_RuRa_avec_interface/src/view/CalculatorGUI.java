@@ -30,7 +30,8 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	private Label ecranHistorique;
 	
 	public CalculatorGUI() {
-		super(new BorderPane(), 400, 400); // Appel au constructeur de la classe mère (Scene) avec une instance de BorderPane et les dimensions    
+		// Appel au constructeur de la classe mère (Scene) avec une instance de BorderPane et les dimensions    
+		super(new BorderPane(), 400, 400); 
 		// Crée le layout de la calculatrice
 		BorderPane root = createCalculatorLayout();
 		// Créer un bouton "AC" pour réinitialiser
@@ -52,7 +53,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         ecranLabel.setPrefHeight(200);
         borderPane.setTop(ecranLabel); 
 
-     // Ajout de l'écran Historique au-dessus de l'écran Label
+     // Ajout de l'écran Historique à droite de l'écrans
         ecranHistorique = new Label("0.0"); // Créer un Label pour l'historique
         ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         ecranHistorique.setTextAlignment(TextAlignment.CENTER);
@@ -102,25 +103,29 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
         ecranHistorique.setText(historiqueText.toString());
     }
-
+    
+    public void updateHistory(String history) {
+        historyLabel.setText("Historique : " + history);
+    }
     
     
     
     public void messageErreur(String message) {
 	    // Créer une nouvelle fenêtre de dialogue
     	dialogStage = new Stage();
-    	resetButton.setMaxWidth(Double.MAX_VALUE); // Définir la largeur maximale
-	    resetButton.setPrefHeight(50); // Définir la hauteur
+    	resetButton.setMaxWidth(Double.MAX_VALUE); // la largeur maximale
+	    resetButton.setPrefHeight(50); // la hauteur
     	dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.setTitle("Attention Erreur");
     	dialogStage.initOwner(ecranLabel.getScene().getWindow());
-        // Créer un TextFlow pour afficher le texte
+       
+    	// Créer un TextFlow pour afficher le texte de manière structurer
         TextFlow textFlow = new TextFlow();
         textFlow.setPrefSize(400, 130); 
         textFlow.setTextAlignment(TextAlignment.CENTER); // Centrer le texte
 
         // Séparer le message en lignes
-        String[] lines = message.split("\n");
+        String[] lines = message.split("\n"); // saut de ligne comme séparateur
 
         // Créer un Text pour chaque ligne du message
         for (String line : lines) {
@@ -151,9 +156,6 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     	return dialogStage;
     }
     
-    public void updateHistory(String history) {
-        historyLabel.setText("Historique : " + history);
-    }
 }
 
 

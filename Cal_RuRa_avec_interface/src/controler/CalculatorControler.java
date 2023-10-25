@@ -14,15 +14,11 @@ public class CalculatorControler {
 	private CalculatorGUI interfaceCalculatrice; // c'est l'interface graphique de la calculatrice
 	private CalculatorModel calculatrice; // c'est la calculatrice ( qui fera les calculs )
 		
-	// on fait ici une association avec l'interface
-	public void setInterface(CalculatorGUI app) {
-        this.interfaceCalculatrice = app;
-    }
-	
 	public CalculatorControler (CalculatorGUI interfaceCalculatrice) {
 		calculatrice = new CalculatorModel(); // on crée une calculatrice quand on lance pour la premiere fois
 		this.interfaceCalculatrice = interfaceCalculatrice;
 		Button[] buttons = this.interfaceCalculatrice.getButtons();
+		
 		// Gestionnaire d'événements pour chaque bouton
         for (int i = 0; i < buttons.length; i++) {
             final int buttonIndex = i;
@@ -58,16 +54,16 @@ public class CalculatorControler {
 	        effectuerOperationSelonIndex(buttonIndex);
 	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
-
+	    // Pour le bouton RR
 	    if (buttonIndex == 18) {
-	        handleRROrAC(false);
-	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());// Ne pas effacer la pile
+	        handleRROrAC(false);// Ne pas effacer la pile
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 
 	    // Pour le bouton AC
 	    if (buttonIndex == 19) {
-	        handleRROrAC(true);
-	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());// Effacer la pile
+	        handleRROrAC(true);// Effacer la pile
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    //Pour le bouton +/-
@@ -110,9 +106,6 @@ public class CalculatorControler {
 	        case 17:
 	            calculatrice.division();
 	            break;
-	        case 12:
-	        	calculatrice.swap();
-	        	break;
 	    }
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());
