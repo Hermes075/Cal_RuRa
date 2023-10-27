@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class CalculatorModel implements CalculatorModelInterface{
 	Stack <Double> accumulateur = new Stack<>();
@@ -114,13 +116,13 @@ public class CalculatorModel implements CalculatorModelInterface{
 		else {
 			// Calculer la puissance de 10 nécessaire pour le nouvel élément
 	        double puissance = Math.pow(10, -String.valueOf(element).length() + 2 - compteurApresVirgule);
-
+	        
 	        // Ajouter l'élément après la virgule en le divisant par la puissance de 10 en vérifiant le signe
 	        if (enCoursPositif == true) {
-	        	enCours += element * puissance;
+	        	enCours += element*puissance;
 	        }
 	        else {
-	        	enCours -= element * puissance;
+	        	enCours -= element*puissance;
 	        }
 	        compteurApresVirgule ++;
 		}
