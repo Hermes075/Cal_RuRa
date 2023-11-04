@@ -105,17 +105,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 		return enCours;
 	}
 	
-	public void ajoutEnCours(String element) {
-		// On vérifie qu'il n'y a pas deja une virgule dans le calcul
-		if (element.equals(".")){
-			if (!element.contains(".")) {
-				enCours = enCours + element;
-			}
-		}
-		else {
-			enCours = enCours + element;
-		}
-	}
+
 	
 	public void clearEnCours() {
 		enCours = "";
@@ -151,6 +141,18 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    return builder.toString();
 	}
 
+	public void ajoutEnCours(String element) {// On vérifie qu'il n'y a pas deja une virgule dans le calcul
+		if (element.equals(".")){
+			if (!element.contains(".")) {
+				enCours = enCours + element;
+			}
+		}
+		else {
+			enCours = enCours + element;
+		}
+	}
+}
+
 
 /*
 	public List<Double> peek3() {
@@ -173,7 +175,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 */
-}
+
 
 
 
