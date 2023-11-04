@@ -13,8 +13,8 @@ public interface CalculatorModelInterface {
 	public Double enlevePile(Stack<Double> pile );
 	public void clearPile();
 	public void ajoutAccumulateur(Double element);
-	public Double getEnCours();
-	public void ajoutEnCours(Double element);
+	public String getEnCours();
+	public void ajoutEnCours(String element);
 	public void clearEnCours();
 	public void swap();
 

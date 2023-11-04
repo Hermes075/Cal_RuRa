@@ -152,6 +152,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 
 
+/*
 	public List<Double> peek3() {
 	    int accumulateurSize = accumulateur.size();
 	    List<Double> lastThreeValues = new ArrayList<>();
@@ -170,6 +171,8 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    Collections.reverse(lastThreeValues);
 	    return lastThreeValues;
 	}
+	
+*/
 }
 
 

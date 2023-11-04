@@ -2,6 +2,6 @@ package view;
 
 
 public interface CalculatorGUIInterface {
-	public void updateLabel(Double value);
+	public void updateLabel(String string);
 	
 }
