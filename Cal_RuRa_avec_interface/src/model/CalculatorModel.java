@@ -100,12 +100,9 @@ public class CalculatorModel implements CalculatorModelInterface{
 		accumulateur = element.toString();
 	}
 	
-	
 	public String getEnCours() {
 		return enCours;
 	}
-	
-
 	
 	public void clearEnCours() {
 		enCours = "";
@@ -141,15 +138,14 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    return builder.toString();
 	}
 
-	public void ajoutEnCours(String element) {// On vérifie qu'il n'y a pas deja une virgule dans le calcul
-		if (element.equals(".")){
-			if (!element.contains(".")) {
-				enCours = enCours + element;
-			}
-		}
-		else {
-			enCours = enCours + element;
-		}
+	public void ajoutEnCours(String element) {
+	    if (element.equals(".")) {
+	        if (!enCours.contains(".")) {
+	            enCours = enCours + element;
+	        }
+	    } else {
+	        enCours = enCours + element;
+	    }
 	}
 }
 

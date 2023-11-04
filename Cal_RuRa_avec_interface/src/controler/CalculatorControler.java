@@ -77,6 +77,8 @@ public class CalculatorControler {
 	    
 	    //Bouton .
 	    if (buttonIndex == 11) {
+	    	calculatrice.ajoutEnCours(".");
+	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
 	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
