@@ -11,8 +11,8 @@ import view.CalculatorGUI;
 
 public class CalculatorControler {
 	// on c
-	private CalculatorGUI interfaceCalculatrice; // c'est l'interface graphique de la calculatrice
-	private CalculatorModel calculatrice; // c'est la calculatrice ( qui fera les calculs )
+	private CalculatorGUI interfaceCalculatrice; // Interface graphique de la calculatrice
+	private CalculatorModel calculatrice; // La calculatrice fera les calculs
 		
 	public CalculatorControler (CalculatorGUI interfaceCalculatrice) {
 		calculatrice = new CalculatorModel(); // on crée une calculatrice quand on lance pour la premiere fois
@@ -77,7 +77,6 @@ public class CalculatorControler {
 	    
 	    //Bouton .
 	    if (buttonIndex == 11) {
-	    	calculatrice.inverserBoolean();
 	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
@@ -131,12 +130,9 @@ public class CalculatorControler {
 	}
 	
 	private void handleRROrAC(boolean clearPile) {
-	    calculatrice.ajoutPile(calculatrice.getEnCours());
+	    calculatrice.ajoutPile(Double.parseDouble(calculatrice.getEnCours()));
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
-	    calculatrice.reinitBoolean();
-	    calculatrice.reinitCompteur();
-	    calculatrice.reinitBoolPositif();
 
 	    if (clearPile) {
 	        calculatrice.clearPile();

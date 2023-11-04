@@ -90,8 +90,8 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     }
     
     // mettre à jour le label
-    public void updateLabel(Double value) {
-        ecranLabel.setText(value.toString());
+    public void updateLabel(String string) {
+        ecranLabel.setText(string);
     }
     
     public void updateHistorique(List<Double> historique) {

@@ -30,7 +30,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1-operande2;
 	            operande.push(resultat);
-	            accumulateur.push(resultat);
+	            accumulateur = resultat.toString();
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la soustraction.");
 	        }
@@ -72,9 +72,9 @@ public class CalculatorModel implements CalculatorModelInterface{
 	        if (operande.empty()) {
 	            throw new EmptyStackException();
 	        } else {
-	            Double element = operande.pop();
-	            operande.push(-element);
-	            accumulateur.push(-element);
+	            Double element = -operande.pop();
+	            operande.push(element);
+	            accumulateur = element.toString();
 	        }
 	    } catch (EmptyStackException e) {
 	        System.err.println("Erreur d'opposition : " + e.getMessage());
