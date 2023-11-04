@@ -43,7 +43,7 @@ public class CalculatorControler {
 	    for (int index : indexChiffres) {
 	        if (index == buttonIndex) {
 	        	//Vérification du mode de la calculatrice
-	            calculatrice.ajoutEnCours(Double.valueOf(index));
+	            calculatrice.ajoutEnCours(String(index));
 	            interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
 	            interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	        }
@@ -90,6 +90,13 @@ public class CalculatorControler {
 	    } 
 	}
 	
+	private Double String(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 	//Permet de ne pas répéter les mêmes lignes de code pour chaque opération
 	private void effectuerOperationSelonIndex(int buttonIndex) {
 	    try {
