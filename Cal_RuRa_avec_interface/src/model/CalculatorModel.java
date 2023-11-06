@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.Stack;
 
 public class CalculatorModel implements CalculatorModelInterface{
-	Stack <Double> accumulateur = new Stack<>();
+	String accumulateur = "";
 	public Stack <Double> operande = new Stack<>();
-	Double enCours=(double) 0;
-	Boolean saisieApresVirgule = false;
-	Integer compteurApresVirgule = 0;
-	Boolean enCoursPositif = true;
+	String enCours = "";
+	Double enCoursD = 0.0;
 	
 	public void addition() {
 	        if (operande.size() >= 2) {
@@ -20,7 +18,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1+operande2;
 	            operande.push(resultat);
-	            accumulateur.push(resultat);
+	            accumulateur = resultat.toString();
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
 	        }
@@ -32,7 +30,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1-operande2;
 	            operande.push(resultat);
-	            accumulateur.push(resultat);
+	            accumulateur = resultat.toString();
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la soustraction.");
 	        }
@@ -45,7 +43,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1*operande2;
 	            operande.push(resultat);
-	            accumulateur.push(resultat);
+	            accumulateur = resultat.toString();
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la multiplication.");
 	        }
@@ -59,7 +57,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            if (operande2 != 0) {
 	                Double resultat = operande1 / operande2;
 	                operande.push(resultat);
-	                accumulateur.push(resultat);
+	                accumulateur = resultat.toString();
 	            } else {
 	                throw new ArithmeticException("Atention : Division par 0");
 	            }
@@ -74,9 +72,9 @@ public class CalculatorModel implements CalculatorModelInterface{
 	        if (operande.empty()) {
 	            throw new EmptyStackException();
 	        } else {
-	            Double element = operande.pop();
-	            operande.push(-element);
-	            accumulateur.push(-element);
+	            Double element = -operande.pop();
+	            operande.push(element);
+	            accumulateur = element.toString();
 	        }
 	    } catch (EmptyStackException e) {
 	        System.err.println("Erreur d'opposition : " + e.getMessage());
@@ -94,69 +92,30 @@ public class CalculatorModel implements CalculatorModelInterface{
 	
 	
 	public void clearPile() {
-		accumulateur.clear();
+		accumulateur = "";
 		operande.clear();
 	}
 	
 	public void ajoutAccumulateur(Double element) {
-		accumulateur.push(element);
+		accumulateur = element.toString();
 	}
 	
-	
-	public Double getEnCours() {
+	public String getEnCours() {
 		return enCours;
 	}
 	
-	public void ajoutEnCours(Double element) {
-		if (saisieApresVirgule == false) {
-			enCours = 10*enCours + element;
-		}
-		else {
-			// Calculer la puissance de 10 nécessaire pour le nouvel élément
-	        double puissance = Math.pow(10, -String.valueOf(element).length() + 2 - compteurApresVirgule);
-
-	        // Ajouter l'élément après la virgule en le divisant par la puissance de 10 en vérifiant le signe
-	        if (enCoursPositif == true) {
-	        	enCours += element * puissance;
-	        }
-	        else {
-	        	enCours -= element * puissance;
-	        }
-	        compteurApresVirgule ++;
-		}
-	}
-	
 	public void clearEnCours() {
-		enCours = (double) 0;
+		enCours = "";
 	}
 	
 	public void inverseEnCours() {
-		enCours = - enCours;
-		enCoursPositif = !enCoursPositif;
+		enCoursD = Double.parseDouble(enCours);
+		enCoursD = -enCoursD;
+		enCours = enCoursD.toString();
 	}
 	
-	public Double getResultat() {
-		return accumulateur.peek();
-	}
-	
-	public Boolean getBoolean(){
-		return saisieApresVirgule;	
-	}
-	
-	public void inverserBoolean(){
-		saisieApresVirgule = !saisieApresVirgule;	
-	}
-	
-	public void reinitBoolean() {
-		saisieApresVirgule = false;
-	}
-	
-	public void reinitCompteur() {
-		compteurApresVirgule = 0;
-	}
-	
-	public void reinitBoolPositif() {
-		enCoursPositif = true;
+	public String getResultat() {
+		return accumulateur;
 	}
 	
 	public void swap(){
@@ -179,7 +138,19 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    return builder.toString();
 	}
 
+	public void ajoutEnCours(String element) {
+	    if (element.equals(".")) {
+	        if (!enCours.contains(".")) {
+	            enCours = enCours + element;
+	        }
+	    } else {
+	        enCours = enCours + element;
+	    }
+	}
+}
 
+
+/*
 	public List<Double> peek3() {
 	    int accumulateurSize = accumulateur.size();
 	    List<Double> lastThreeValues = new ArrayList<>();
@@ -198,14 +169,18 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    Collections.reverse(lastThreeValues);
 	    return lastThreeValues;
 	}
+<<<<<<< HEAD
 	
 	public void delete() {
 		operande.pop();
 	}
 
 
+=======
+>>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
 	
-}
+*/
+
 
 
 

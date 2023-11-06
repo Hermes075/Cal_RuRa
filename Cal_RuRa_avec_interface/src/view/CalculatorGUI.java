@@ -48,7 +48,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
     private BorderPane createCalculatorLayout() {
         BorderPane borderPane = new BorderPane();
-        ecranLabel = new Label("0.0"); // Créer un Label
+        ecranLabel = new Label(""); // Créer un Label
         ecranLabel.setFont(Font.font("Arial", FontWeight.BOLD, 40));
         ecranLabel.setPrefHeight(200);
         borderPane.setTop(ecranLabel); 
@@ -77,7 +77,11 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         String[] buttonLabels = {
             "0", "1", "2", "3", "4",
             "5", "6", "7", "8","9",
+<<<<<<< HEAD
             "POP", ",", "SWAP", "+/-","+",
+=======
+            "=", ".", "SWAP", "+/-","+",
+>>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
             "-", "x", "/", "RR","AC"
         };
 
@@ -90,8 +94,8 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     }
     
     // mettre à jour le label
-    public void updateLabel(Double value) {
-        ecranLabel.setText(value.toString());
+    public void updateLabel(String string) {
+        ecranLabel.setText(string);
     }
     
     public void updateHistorique(List<Double> historique) {

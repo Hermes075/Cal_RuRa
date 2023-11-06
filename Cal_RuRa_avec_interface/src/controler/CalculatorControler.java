@@ -11,8 +11,8 @@ import view.CalculatorGUI;
 
 public class CalculatorControler {
 	// on c
-	private CalculatorGUI interfaceCalculatrice; // c'est l'interface graphique de la calculatrice
-	private CalculatorModel calculatrice; // c'est la calculatrice ( qui fera les calculs )
+	private CalculatorGUI interfaceCalculatrice; // Interface graphique de la calculatrice
+	private CalculatorModel calculatrice; // La calculatrice fera les calculs
 		
 	public CalculatorControler (CalculatorGUI interfaceCalculatrice) {
 		calculatrice = new CalculatorModel(); // on crée une calculatrice quand on lance pour la premiere fois
@@ -43,27 +43,27 @@ public class CalculatorControler {
 	    for (int index : indexChiffres) {
 	        if (index == buttonIndex) {
 	        	//Vérification du mode de la calculatrice
-	            calculatrice.ajoutEnCours(Double.valueOf(index));
+	            calculatrice.ajoutEnCours(String.valueOf(index));
 	            interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
-	            interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	            //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	        }
 	    }
 
 	    // Si l'index est dans la plage des opérations
 	    if (buttonIndex >= 14 && buttonIndex <= 17) {
 	        effectuerOperationSelonIndex(buttonIndex);
-	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    // Pour le bouton RR
 	    if (buttonIndex == 18) {
 	        handleRROrAC(false);// Ne pas effacer la pile
-	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 
 	    // Pour le bouton AC
 	    if (buttonIndex == 19) {
 	        handleRROrAC(true);// Effacer la pile
-	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    //Pour le bouton +/-
@@ -72,13 +72,14 @@ public class CalculatorControler {
 	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
 		    String historique = calculatrice.getOperandeAsString();
 	        interfaceCalculatrice.updateHistory(historique);
-	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    //Bouton .
 	    if (buttonIndex == 11) {
-	    	calculatrice.inverserBoolean();
-	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    	calculatrice.ajoutEnCours(".");
+	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    if (buttonIndex == 10) {
@@ -96,7 +97,7 @@ public class CalculatorControler {
 	        interfaceCalculatrice.updateHistory(historique);
 	    } 
 	}
-	
+
 	//Permet de ne pas répéter les mêmes lignes de code pour chaque opération
 	private void effectuerOperationSelonIndex(int buttonIndex) {
 	    try {
@@ -118,7 +119,7 @@ public class CalculatorControler {
 	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());
 	    String historique = calculatrice.getOperandeAsString();
         interfaceCalculatrice.updateHistory(historique);
-	    interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }catch (EmptyStackException e) {
 	        interfaceCalculatrice.messageErreur(e.getMessage());
 	    } catch (IllegalArgumentException e) {
@@ -131,12 +132,9 @@ public class CalculatorControler {
 	}
 	
 	private void handleRROrAC(boolean clearPile) {
-	    calculatrice.ajoutPile(calculatrice.getEnCours());
+	    calculatrice.ajoutPile(Double.parseDouble(calculatrice.getEnCours()));
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
-	    calculatrice.reinitBoolean();
-	    calculatrice.reinitCompteur();
-	    calculatrice.reinitBoolPositif();
 
 	    if (clearPile) {
 	        calculatrice.clearPile();
