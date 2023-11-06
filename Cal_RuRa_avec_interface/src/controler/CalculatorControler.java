@@ -81,6 +81,13 @@ public class CalculatorControler {
 	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
+	    if (buttonIndex == 10) {
+	    	calculatrice.delete();
+	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    	String historique = calculatrice.getOperandeAsString();
+	        interfaceCalculatrice.updateHistory(historique);
+	    }
+	    
 	    //Bouton SWAP
 	    if (buttonIndex == 12) {
 	    	calculatrice.swap();

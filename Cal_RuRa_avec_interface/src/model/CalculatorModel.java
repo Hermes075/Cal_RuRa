@@ -198,6 +198,10 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    Collections.reverse(lastThreeValues);
 	    return lastThreeValues;
 	}
+	
+	public void delete() {
+		operande.pop();
+	}
 
 
 	
