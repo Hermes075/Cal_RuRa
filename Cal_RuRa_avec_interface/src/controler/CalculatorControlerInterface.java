@@ -1,6 +1,8 @@
 package controler;
 
-public interface CalculatorControlerInterface {
-	
+import java.util.List;
 
+public interface CalculatorControlerInterface {
+	//public String change();
+	//public List<Double> change();
 }

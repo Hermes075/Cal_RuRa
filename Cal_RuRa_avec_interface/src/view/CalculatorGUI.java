@@ -77,11 +77,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         String[] buttonLabels = {
             "0", "1", "2", "3", "4",
             "5", "6", "7", "8","9",
-<<<<<<< HEAD
-            "POP", ",", "SWAP", "+/-","+",
-=======
-            "=", ".", "SWAP", "+/-","+",
->>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
+            "POP", ".", "SWAP", "+/-","+",
             "-", "x", "/", "RR","AC"
         };
 
@@ -94,7 +90,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     }
     
     // mettre à jour le label
-    public void updateLabel(String string) {
+    public void affiche(String string) {
         ecranLabel.setText(string);
     }
     

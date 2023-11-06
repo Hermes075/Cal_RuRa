@@ -44,7 +44,7 @@ public class CalculatorControler {
 	        if (index == buttonIndex) {
 	        	//Vérification du mode de la calculatrice
 	            calculatrice.ajoutEnCours(String.valueOf(index));
-	            interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	            interfaceCalculatrice.affiche(calculatrice.getEnCours());
 	            //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	        }
 	    }
@@ -69,7 +69,7 @@ public class CalculatorControler {
 	    //Pour le bouton +/-
 	    if (buttonIndex == 13) {
 	    	calculatrice.inverseEnCours();
-	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 		    String historique = calculatrice.getOperandeAsString();
 	        interfaceCalculatrice.updateHistory(historique);
 	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
@@ -78,13 +78,14 @@ public class CalculatorControler {
 	    //Bouton .
 	    if (buttonIndex == 11) {
 	    	calculatrice.ajoutEnCours(".");
-	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
+	    //Bouton POP
 	    if (buttonIndex == 10) {
-	    	calculatrice.delete();
-	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    	calculatrice.pop();
+	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    	String historique = calculatrice.getOperandeAsString();
 	        interfaceCalculatrice.updateHistory(historique);
 	    }
@@ -92,7 +93,7 @@ public class CalculatorControler {
 	    //Bouton SWAP
 	    if (buttonIndex == 12) {
 	    	calculatrice.swap();
-	    	interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 		    String historique = calculatrice.getOperandeAsString();
 	        interfaceCalculatrice.updateHistory(historique);
 	    } 
@@ -103,20 +104,20 @@ public class CalculatorControler {
 	    try {
 		switch (buttonIndex) {
 	        case 14:
-	            calculatrice.addition();
+	            calculatrice.add();
 	            break;
 	        case 15:
-	            calculatrice.soustraction();
+	            calculatrice.substract();
 	            break;
 	        case 16:
-	            calculatrice.multiplication();
+	            calculatrice.multiply();
 	            break;
 	        case 17:
-	            calculatrice.division();
+	            calculatrice.divide();
 	            break;
 	    }
 	    calculatrice.clearEnCours();
-	    interfaceCalculatrice.updateLabel(calculatrice.getResultat());
+	    interfaceCalculatrice.affiche(calculatrice.getResultat());
 	    String historique = calculatrice.getOperandeAsString();
         interfaceCalculatrice.updateHistory(historique);
 	    //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
@@ -132,12 +133,12 @@ public class CalculatorControler {
 	}
 	
 	private void handleRROrAC(boolean clearPile) {
-	    calculatrice.ajoutPile(Double.parseDouble(calculatrice.getEnCours()));
+	    calculatrice.push(Double.parseDouble(calculatrice.getEnCours()));
 	    calculatrice.clearEnCours();
-	    interfaceCalculatrice.updateLabel(calculatrice.getEnCours());
+	    interfaceCalculatrice.affiche(calculatrice.getEnCours());
 
 	    if (clearPile) {
-	        calculatrice.clearPile();
+	        calculatrice.clear();
 	    }
 	    String historique = calculatrice.getOperandeAsString();
         interfaceCalculatrice.updateHistory(historique);
