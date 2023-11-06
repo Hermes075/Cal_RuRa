@@ -2,6 +2,7 @@ package view;
 
 import java.util.List;
 
+
 import javafx.geometry.Pos;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -18,6 +19,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.control.Label;
 
+
 public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
 	private Button[] buttons;
@@ -31,7 +33,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	
 	public CalculatorGUI() {
 		// Appel au constructeur de la classe mère (Scene) avec une instance de BorderPane et les dimensions    
-		super(new BorderPane(), 400, 400); 
+		super(new BorderPane(), 400, 500); 
 		// Crée le layout de la calculatrice
 		BorderPane root = createCalculatorLayout();
 		// Créer un bouton "AC" pour réinitialiser
@@ -44,6 +46,10 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         historyLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
         historyLabel.setAlignment(Pos.CENTER);
         ((BorderPane) getRoot()).setTop(historyLabel);
+        
+     // Charger la feuille de style CSS
+        String cssPath = getClass().getResource("application.css").toExternalForm();
+        getStylesheets().add(cssPath);
 	}
 
     private BorderPane createCalculatorLayout() {
