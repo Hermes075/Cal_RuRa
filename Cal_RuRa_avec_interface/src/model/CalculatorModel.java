@@ -184,16 +184,8 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    Collections.reverse(lastThreeValues);
 	    return lastThreeValues;
 	}
-<<<<<<< HEAD
-	
-	public void delete() {
-		operande.pop();
-	}
 
 
-=======
->>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
-	
 */
 
 
