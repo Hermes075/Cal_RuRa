@@ -84,9 +84,13 @@ public class CalculatorModel implements CalculatorModelInterface{
 		operande.push(element);
 	}
 	
-	public Double pop() {
-		return operande.pop();
+	public void pop() {
+	    if (!operande.isEmpty()) {
+	        Double element = operande.pop();
+	        enCours = element.toString();
+	    }
 	}
+
 	
 	
 	public void clear() {
@@ -111,9 +115,10 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 	public void inverseEnCours() {
+		if (enCours!="") {
 		enCoursD = Double.parseDouble(enCours);
 		enCoursD = -enCoursD;
-		enCours = enCoursD.toString();
+		enCours = enCoursD.toString();}
 	}
 	
 	public String getResultat() {

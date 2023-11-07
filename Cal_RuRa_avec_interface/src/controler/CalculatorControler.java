@@ -72,6 +72,7 @@ public class CalculatorControler {
 	        interfaceCalculatrice.updateHistory(historique);
 	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
+	    	
 	    
 	    //Bouton .
 	    if (buttonIndex == 11) {
@@ -83,8 +84,8 @@ public class CalculatorControler {
 	    //Bouton POP
 	    if (buttonIndex == 10) {
 	    	calculatrice.pop();
-	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
-	    	String historique = calculatrice.getOperandeAsString();
+	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
+		    String historique = calculatrice.getOperandeAsString();
 	        interfaceCalculatrice.updateHistory(historique);
 	    }
 	    
