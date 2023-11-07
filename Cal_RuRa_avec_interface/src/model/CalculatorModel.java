@@ -162,6 +162,13 @@ public class CalculatorModel implements CalculatorModelInterface{
 	public String getAccu() {
 		return accu;
 	}
+
+	public void supprimer() {
+	    if (!enCours.isEmpty()) {
+	        enCours = enCours.substring(0, enCours.length() - 1);
+	    }
+	}
+
 }
 
 

@@ -24,6 +24,7 @@ public class CalculatorControler {
             final int buttonIndex = i;
             buttons[i].setOnAction(e -> handleButtonClick(buttonIndex));
         }
+        
 
         this.interfaceCalculatrice.getResetButton().setOnAction(e -> {
         	// Fermer la fenêtre de dialogue
@@ -48,14 +49,23 @@ public class CalculatorControler {
 	    }
 
 	    // Si l'index est dans la plage des opérations
-	    if (buttonIndex >= 14 && buttonIndex <= 17) {
+	    if (buttonIndex >= 14 && buttonIndex <= 17 ) {
 	        effectuerOperationSelonIndex(buttonIndex);
 	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
-	    // Pour le bouton RR
+	    
+	 // Pour le bouton "<--"
 	    if (buttonIndex == 18) {
-	        handleRROrAC(false);// Ne pas effacer la pile
-	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    calculatrice.supprimer();
+	    interfaceCalculatrice.affiche(calculatrice.getEnCours());
+	    String historique = calculatrice.getOperandeAsString();
+        interfaceCalculatrice.updateHistory(historique);
+	    
+	    }
+	    
+	    // Pour le bouton "ENTER"
+	    if (buttonIndex == 20) {
+	    handleRROrAC(false);
 	    }
 
 	    // Pour le bouton AC
