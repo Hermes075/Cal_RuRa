@@ -99,7 +99,11 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 	public String getEnCours() {
-		return enCours;
+		if (enCours.length()==0) {
+			return "0.0";
+		}
+		else {
+		return enCours;}
 	}
 	
 	public void clearEnCours() {

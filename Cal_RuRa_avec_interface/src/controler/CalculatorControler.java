@@ -90,10 +90,13 @@ public class CalculatorControler {
 	    
 	    //Bouton SWAP
 	    if (buttonIndex == 12) {
-	    	calculatrice.swap();
+	    	try{calculatrice.swap();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 		    String historique = calculatrice.getOperandeAsString();
-	        interfaceCalculatrice.updateHistory(historique);
+	        interfaceCalculatrice.updateHistory(historique);}
+	    	catch (IllegalArgumentException e) {
+		        interfaceCalculatrice.messageErreur(e.getMessage());
+	    	}
 	    } 
 	}
 
