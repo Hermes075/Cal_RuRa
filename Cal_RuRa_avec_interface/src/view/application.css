@@ -1,1 +1,66 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Style de l'application */
+.root {
+    -fx-background-color: #e3e3e3; /* Couleur de fond */
+    -fx-padding: 10;
+}
+
+/* Style de l'écran principal */
+#ecranLabel {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Style de l'historique */
+#ecranHistorique {
+    -fx-font-size: 1em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #666666; /* Couleur du texte */
+}
+
+/* Style des boutons */
+.button {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-background-color: #ffffff; /* Couleur de fond par défaut */
+}
+
+/* Effets de survol des boutons */
+.button:hover {
+    -fx-background-color: #e0e0e0; /* Couleur de fond au survol */
+    -fx-cursor: hand; /* Curseur de la main au survol */
+}
+
+/* Effets de clic des boutons */
+.button:pressed {
+    -fx-background-color: #b0b0b0; /* Couleur de fond en cliquant */
+}
+
+/* Style du bouton "AC" */
+#resetButton {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 50px;
+    -fx-font-size: 1em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-background-color: #ff4444; /* Couleur de fond spéciale */
+}
+
+/* Effets de survol et de clic pour le bouton "AC" */
+#resetButton:hover {
+    -fx-background-color: #ff6666;
+}
+
+#resetButton:pressed {
+    -fx-background-color: #ff0000;
+}
+
+/* Style du label d'historique */
+#historyLabel {
+    -fx-font-size: 1.2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #666666; /* Couleur du texte */
+}
