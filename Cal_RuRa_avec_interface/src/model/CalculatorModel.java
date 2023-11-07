@@ -104,10 +104,10 @@ public class CalculatorModel implements CalculatorModelInterface{
 	
 	public String getEnCours() {
 		if (enCours.length()==0) {
-			return "0.0";
+			return "0";
 		}
 		else {
-		return enCours;}
+		return enCours.toString();}
 	}
 	
 	public void clearEnCours() {
