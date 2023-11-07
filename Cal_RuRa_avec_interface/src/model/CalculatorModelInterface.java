@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Stack;
-
 public interface CalculatorModelInterface {
 	
 	public void add();
