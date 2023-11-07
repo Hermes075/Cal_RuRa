@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Stack;
-
 public interface CalculatorModelInterface {
 	
 	public void add();
@@ -10,7 +8,7 @@ public interface CalculatorModelInterface {
 	public void divide();
 	public void opposite();
 	public void push(Double element);
-	public Double pop();
+	public void pop();
 	public void drop();
 	public void swap();
 	public void clear();

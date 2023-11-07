@@ -24,12 +24,11 @@ public class CalculatorControler {
             final int buttonIndex = i;
             buttons[i].setOnAction(e -> handleButtonClick(buttonIndex));
         }
+        
 
         this.interfaceCalculatrice.getResetButton().setOnAction(e -> {
-            // Réinitialiser la fenêtre principale et la mémoire de la calculatrice
-            handleButtonClick(19);
-            // Fermer la fenêtre de dialogue
-            this.interfaceCalculatrice.getDialogStage().close();
+        	// Fermer la fenêtre de dialogue
+            this.interfaceCalculatrice.fermeDialogueStage();
         });
 
 	}
@@ -50,14 +49,23 @@ public class CalculatorControler {
 	    }
 
 	    // Si l'index est dans la plage des opérations
-	    if (buttonIndex >= 14 && buttonIndex <= 17) {
+	    if (buttonIndex >= 14 && buttonIndex <= 17 ) {
 	        effectuerOperationSelonIndex(buttonIndex);
 	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
-	    // Pour le bouton RR
+	    
+	 // Pour le bouton "<--"
 	    if (buttonIndex == 18) {
-	        handleRROrAC(false);// Ne pas effacer la pile
-	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    calculatrice.supprimer();
+	    interfaceCalculatrice.affiche(calculatrice.getEnCours());
+	    String historique = calculatrice.getOperandeAsString();
+        interfaceCalculatrice.updateHistory(historique);
+	    
+	    }
+	    
+	    // Pour le bouton "ENTER"
+	    if (buttonIndex == 20) {
+	    handleRROrAC(false);
 	    }
 
 	    // Pour le bouton AC
@@ -74,6 +82,7 @@ public class CalculatorControler {
 	        interfaceCalculatrice.updateHistory(historique);
 	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
+	    	
 	    
 	    //Bouton .
 	    if (buttonIndex == 11) {
@@ -85,17 +94,20 @@ public class CalculatorControler {
 	    //Bouton POP
 	    if (buttonIndex == 10) {
 	    	calculatrice.pop();
-	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
-	    	String historique = calculatrice.getOperandeAsString();
+	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
+		    String historique = calculatrice.getOperandeAsString();
 	        interfaceCalculatrice.updateHistory(historique);
 	    }
 	    
 	    //Bouton SWAP
 	    if (buttonIndex == 12) {
-	    	calculatrice.swap();
+	    	try{calculatrice.swap();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 		    String historique = calculatrice.getOperandeAsString();
-	        interfaceCalculatrice.updateHistory(historique);
+	        interfaceCalculatrice.updateHistory(historique);}
+	    	catch (IllegalArgumentException e) {
+		        interfaceCalculatrice.messageErreur(e.getMessage());
+	    	}
 	    } 
 	}
 

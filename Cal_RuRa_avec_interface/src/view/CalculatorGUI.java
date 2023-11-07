@@ -2,14 +2,18 @@ package view;
 
 import java.util.List;
 
-
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -26,6 +30,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	private Button resetButton;
 	private Stage dialogStage;
 	
+	
     // Texte en haut de la caulatrice
 	private Label ecranLabel;
 	private Label historyLabel;
@@ -37,7 +42,8 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 		// Crée le layout de la calculatrice
 		BorderPane root = createCalculatorLayout();
 		// Créer un bouton "AC" pour réinitialiser
-	    resetButton = new Button("AC");
+	    resetButton = new Button("CLOSE");
+	    
 	    // Créer une nouvelle fenêtre de dialogue
     	dialogStage = new Stage();
 		// Associe le layout à la racine de la scène
@@ -52,48 +58,61 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         getStylesheets().add(cssPath);
 	}
 
-    private BorderPane createCalculatorLayout() {
-        BorderPane borderPane = new BorderPane();
-        ecranLabel = new Label(""); // Créer un Label
-        ecranLabel.setFont(Font.font("Arial", FontWeight.BOLD, 40));
-        ecranLabel.setPrefHeight(200);
-        borderPane.setTop(ecranLabel); 
+	private BorderPane createCalculatorLayout() {
+	    BorderPane borderPane = new BorderPane();
+	    ecranLabel = new Label(""); // Créer un Label
+	    ecranLabel.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+	    ecranLabel.setPrefHeight(200);
+	    borderPane.setTop(ecranLabel);
 
-     // Ajout de l'écran Historique à droite de l'écrans
-        ecranHistorique = new Label("0.0"); // Créer un Label pour l'historique
-        ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        ecranHistorique.setTextAlignment(TextAlignment.CENTER);
-        borderPane.setRight(ecranHistorique);
-        
-        GridPane gridPane = new GridPane();
-        borderPane.setCenter(gridPane);
+	    GridPane gridPane = new GridPane();
+	    borderPane.setCenter(gridPane);
 
-        // Création des boutons et ajout des gestionnaires d'événements
-        buttons = createAndSetupButtons();
-        gridPane.addColumn(0, buttons[19], buttons[7], buttons[4], buttons[1], buttons[0]);
+	    // Création des boutons et ajout des gestionnaires d'événements
+	    buttons = createAndSetupButtons();
+	    gridPane.addColumn(0, buttons[19], buttons[7], buttons[4], buttons[1], buttons[0]);
         gridPane.addColumn(1, buttons[13], buttons[8], buttons[5], buttons[2], buttons[11]);
         gridPane.addColumn(2, buttons[12], buttons[9], buttons[6], buttons[3], buttons[10]);
         gridPane.addColumn(3, buttons[17], buttons[16], buttons[15], buttons[14], buttons[18]);
 
-        return borderPane;
-    }
+	    // Crée le bouton "ENTER" pour remplir la dernière ligne
+        buttons[20].setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+	    gridPane.add(buttons[20], 0, 5); // Ajoute le bouton à la dernière ligne
+
+	    // Ajout de l'écran Historique à droite de l'écran
+	    ecranHistorique = new Label("0.0"); // Créer un Label pour l'historique
+	    ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+	    ecranHistorique.setTextAlignment(TextAlignment.CENTER);
+	    borderPane.setRight(ecranHistorique);
+
+	    // Permet au bouton "ENTER" de remplir la dernière ligne
+	    GridPane.setColumnSpan(buttons[20], 4); // Colonne 0 jusqu'à 4 inclus
+	    GridPane.setHalignment(buttons[20], HPos.CENTER); // Centre le bouton horizontalement
+
+	    return borderPane;
+	}
+
     // création des buttons
-    private Button[] createAndSetupButtons() {
-        Button[] buttons = new Button[20];
-        String[] buttonLabels = {
-            "0", "1", "2", "3", "4",
-            "5", "6", "7", "8","9",
-            "POP", ".", "SWAP", "+/-","+",
-            "-", "x", "/", "RR","AC"
-        };
+	// création des buttons
+	private Button[] createAndSetupButtons() {
+	    // Crée un tableau de boutons de taille 21
+	    Button[] buttons = new Button[21];
+	    String[] buttonLabels = {
+	        "0", "1", "2", "3", "4",
+	        "5", "6", "7", "8", "9",
+	        "POP", ".", "SWAP", "+/-", "+",
+	        "-", "x", "/", "<--", "AC","ENTER"
+	    };
 
-        for (int i = 0; i < buttons.length; i++) {
-            buttons[i] = new Button(buttonLabels[i]);
-            buttons[i].setPrefSize(100, 100);
-        }
+	    for (int i = 0; i < 21; i++) {
+	        buttons[i] = new Button(buttonLabels[i]);
+	        buttons[i].setPrefSize(100, 100);
+	    }
 
-        return buttons;
-    }
+
+	    return buttons;
+	}
+
     
     // mettre à jour le label
     public void affiche(String string) {
@@ -161,6 +180,12 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     public Stage getDialogStage(){
     	return dialogStage;
     }
+
+	@Override
+	public void fermeDialogueStage() {
+		dialogStage.close();
+	}
+
     
 }
 

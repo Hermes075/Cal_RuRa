@@ -84,9 +84,13 @@ public class CalculatorModel implements CalculatorModelInterface{
 		operande.push(element);
 	}
 	
-	public Double pop() {
-		return operande.pop();
+	public void pop() {
+	    if (!operande.isEmpty()) {
+	        Double element = operande.pop();
+	        enCours = element.toString();
+	    }
 	}
+
 	
 	
 	public void clear() {
@@ -99,7 +103,11 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 	public String getEnCours() {
-		return enCours;
+		if (enCours.length()==0) {
+			return "0.0";
+		}
+		else {
+		return enCours;}
 	}
 	
 	public void clearEnCours() {
@@ -107,9 +115,10 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 	public void inverseEnCours() {
+		if (enCours!="") {
 		enCoursD = Double.parseDouble(enCours);
 		enCoursD = -enCoursD;
-		enCours = enCoursD.toString();
+		enCours = enCoursD.toString();}
 	}
 	
 	public String getResultat() {
@@ -153,6 +162,13 @@ public class CalculatorModel implements CalculatorModelInterface{
 	public String getAccu() {
 		return accu;
 	}
+
+	public void supprimer() {
+	    if (!enCours.isEmpty()) {
+	        enCours = enCours.substring(0, enCours.length() - 1);
+	    }
+	}
+
 }
 
 
@@ -175,16 +191,8 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    Collections.reverse(lastThreeValues);
 	    return lastThreeValues;
 	}
-<<<<<<< HEAD
-	
-	public void delete() {
-		operande.pop();
-	}
 
 
-=======
->>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
-	
 */
 
 
