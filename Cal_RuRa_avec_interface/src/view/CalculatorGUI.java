@@ -37,7 +37,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 		// Crée le layout de la calculatrice
 		BorderPane root = createCalculatorLayout();
 		// Créer un bouton "AC" pour réinitialiser
-	    resetButton = new Button("AC");
+	    resetButton = new Button("CLOSE");
 	    // Créer une nouvelle fenêtre de dialogue
     	dialogStage = new Stage();
 		// Associe le layout à la racine de la scène
@@ -84,7 +84,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
             "0", "1", "2", "3", "4",
             "5", "6", "7", "8","9",
             "POP", ".", "SWAP", "+/-","+",
-            "-", "x", "/", "RR	","AC"
+            "-", "x", "/", "ENTER	","AC"
         };
 
         for (int i = 0; i < buttons.length; i++) {
@@ -161,6 +161,11 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     public Stage getDialogStage(){
     	return dialogStage;
     }
+
+	@Override
+	public void fermeDialogueStage() {
+		dialogStage.close();
+	}
     
 }
 

@@ -26,10 +26,8 @@ public class CalculatorControler {
         }
 
         this.interfaceCalculatrice.getResetButton().setOnAction(e -> {
-            // Réinitialiser la fenêtre principale et la mémoire de la calculatrice
-            handleButtonClick(19);
-            // Fermer la fenêtre de dialogue
-            this.interfaceCalculatrice.getDialogStage().close();
+        	// Fermer la fenêtre de dialogue
+            this.interfaceCalculatrice.fermeDialogueStage();
         });
 
 	}
