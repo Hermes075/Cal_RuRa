@@ -2,6 +2,7 @@ package view;
 
 
 public interface CalculatorGUIInterface {
-	public void updateLabel(String string);
-	
+	public void affiche(String string);
+	//public String change();
+	//public List<Double> change();
 }

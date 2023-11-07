@@ -4,49 +4,50 @@ import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class CalculatorModel implements CalculatorModelInterface{
-	String accumulateur = "";
+	private String accu = "";
+
 	public Stack <Double> operande = new Stack<>();
 	String enCours = "";
 	Double enCoursD = 0.0;
 	
-	public void addition() {
+	public void add() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1+operande2;
 	            operande.push(resultat);
-	            accumulateur = resultat.toString();
+	            accu = resultat.toString();
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
 	        }
 	}
 	
-	public void soustraction() {
+	public void substract() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1-operande2;
 	            operande.push(resultat);
-	            accumulateur = resultat.toString();
+	            accu = resultat.toString();
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la soustraction.");
 	        }
 	}
 
 	
-	public void multiplication() {
+	public void multiply() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
 	            Double resultat = operande1*operande2;
 	            operande.push(resultat);
-	            accumulateur = resultat.toString();
+	            accu = resultat.toString();
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la multiplication.");
 	        }
 	}
 	
-	public void division() {
+	public void divide() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
 	            Double operande1 = operande.pop();
@@ -54,9 +55,9 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            if (operande2 != 0) {
 	                Double resultat = operande1 / operande2;
 	                operande.push(resultat);
-	                accumulateur = resultat.toString();
+	                accu = resultat.toString();
 	            } else {
-	                throw new ArithmeticException("Atention : Division par 0");
+	                throw new ArithmeticException("Attention : Division par 0");
 	            }
 	        } else {
 	            throw new IllegalArgumentException("Pas assez d'opérandes pour la division.");
@@ -64,14 +65,14 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 
 	
-	public void opposition() {
+	public void opposite() {
 	    try {
 	        if (operande.empty()) {
 	            throw new EmptyStackException();
 	        } else {
 	            Double element = -operande.pop();
 	            operande.push(element);
-	            accumulateur = element.toString();
+	            accu = element.toString();
 	        }
 	    } catch (EmptyStackException e) {
 	        System.err.println("Erreur d'opposition : " + e.getMessage());
@@ -79,22 +80,22 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 
 	
-	public void ajoutPile(Double element) {
+	public void push(Double element) {
 		operande.push(element);
 	}
 	
-	public Double enlevePile(Stack<Double> pile ) {
+	public Double pop() {
 		return operande.pop();
 	}
 	
 	
-	public void clearPile() {
-		accumulateur = "";
+	public void clear() {
+		accu = "";
 		operande.clear();
 	}
 	
 	public void ajoutAccumulateur(Double element) {
-		accumulateur = element.toString();
+		accu = element.toString();
 	}
 	
 	public String getEnCours() {
@@ -112,7 +113,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 	public String getResultat() {
-		return accumulateur;
+		return accu;
 	}
 	
 	public void swap(){
@@ -144,6 +145,14 @@ public class CalculatorModel implements CalculatorModelInterface{
 	        enCours = enCours + element;
 	    }
 	}
+
+	public void drop() {
+		operande.pop();
+	}
+	
+	public String getAccu() {
+		return accu;
+	}
 }
 
 
@@ -166,6 +175,15 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    Collections.reverse(lastThreeValues);
 	    return lastThreeValues;
 	}
+<<<<<<< HEAD
+	
+	public void delete() {
+		operande.pop();
+	}
+
+
+=======
+>>>>>>> branch 'main' of https://github.com/Hermes075/Cal_RuRa.git
 	
 */
 
