@@ -129,7 +129,7 @@ public class CalculatorControler {
 	            break;
 	    }
 	    calculatrice.clearEnCours();
-	    interfaceCalculatrice.affiche(calculatrice.getResultat());
+	    interfaceCalculatrice.afficheResOp(calculatrice.getResultat());
 	    String historique = calculatrice.getOperandeAsString();
         interfaceCalculatrice.updateHistory(historique);
 	    //interfaceCalculatrice.updateHistorique(calculatrice.peek3());

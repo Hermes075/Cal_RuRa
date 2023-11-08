@@ -117,21 +117,33 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
     
     // mettre à jour le label
-	public void affiche(String string) {
-	    double result = Double.parseDouble(string);
+	 public void affiche(String string) {
+	        ecranLabel.setText(string);
+	    }
+	 
+	 public void afficheResOp(String string) {
+		 double result = Double.parseDouble(string);
 
-	    // Utiliser un format dynamique pour gérer le nombre de décimales
-	    String formattedResult = formatDouble(result);
-	    ecranLabel.setText(formattedResult);
-	}
+		 // Utiliser un format dynamique pour gérer le nombre de décimales
+		 String formattedResult = formatDouble(result).toString();
+		 ecranLabel.setText(formattedResult);
+	 	}
+	 
+	 public String getResOp(String string) {
+		 double result = Double.parseDouble(string);
 
-	private String formatDouble(double value) {
-	    // Créer un format dynamique en fonction du nombre de décimales
-	    String pattern = "#." + new String(new char[10]).replace('\0', '#'); // Format jusqu'à 10 décimales
+		 // Utiliser un format dynamique pour gérer le nombre de décimales
+		 String formattedResult = formatDouble(result).toString();
+		 return formattedResult;
+	 }
 
-	    DecimalFormat decimalFormat = new DecimalFormat(pattern);
-	    return decimalFormat.format(value);
-	}
+	 private String formatDouble(double value) {
+		 // Créer un format dynamique en fonction du nombre de décimales
+		 String pattern = "#." + new String(new char[10]).replace('\0', '#'); // Format jusqu'à 10 décimales
+
+		 DecimalFormat decimalFormat = new DecimalFormat(pattern);
+		 return decimalFormat.format(value);
+		}
 
     
     public void updateHistorique(List<Double> historique) {
