@@ -1,7 +1,6 @@
 package model;
 
 public interface CalculatorModelInterface {
-	
 	public void add();
 	public void substract();
 	public void multiply();
@@ -12,6 +11,4 @@ public interface CalculatorModelInterface {
 	public void drop();
 	public void swap();
 	public void clear();
-
-
 }

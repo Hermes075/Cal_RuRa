@@ -14,7 +14,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) {
-    	//association avec le controller 
+    	//Association avec le controller 
     	CalculatorGUI gui = new CalculatorGUI();
     	CalculatorControler controller = new CalculatorControler(gui); // on crée le controlleur pour la premiere fois
         primaryStage.setScene(gui);

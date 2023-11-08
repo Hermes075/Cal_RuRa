@@ -10,12 +10,11 @@ import view.CalculatorGUI;
 
 
 public class CalculatorControler {
-	// on c
 	private CalculatorGUI interfaceCalculatrice; // Interface graphique de la calculatrice
 	private CalculatorModel calculatrice; // La calculatrice fera les calculs
 		
 	public CalculatorControler (CalculatorGUI interfaceCalculatrice) {
-		calculatrice = new CalculatorModel(); // on crée une calculatrice quand on lance pour la premiere fois
+		calculatrice = new CalculatorModel(); // On crée une calculatrice quand on lance pour la premiere fois
 		this.interfaceCalculatrice = interfaceCalculatrice;
 		Button[] buttons = this.interfaceCalculatrice.getButtons();
 		
@@ -54,7 +53,7 @@ public class CalculatorControler {
 	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
-	 // Pour le bouton "<--"
+	 // Bouton "<--"
 	    if (buttonIndex == 18) {
 	    calculatrice.supprimer();
 	    interfaceCalculatrice.affiche(calculatrice.getEnCours());
@@ -63,7 +62,7 @@ public class CalculatorControler {
 	    
 	    }
 	    
-	    // Pour le bouton "ENTER"
+	    // Bouton "ENTER"
 	    if (buttonIndex == 20) {
 	    handleRROrAC(false);
 	    }
@@ -74,7 +73,7 @@ public class CalculatorControler {
 	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
-	    //Pour le bouton +/-
+	    // Bouton +/-
 	    if (buttonIndex == 13) {
 	    	calculatrice.inverseEnCours();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
@@ -84,14 +83,14 @@ public class CalculatorControler {
 	    }
 	    	
 	    
-	    //Bouton .
+	    // Bouton .
 	    if (buttonIndex == 11) {
 	    	calculatrice.ajoutEnCours(".");
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
-	    //Bouton POP
+	    // Bouton POP
 	    if (buttonIndex == 10) {
 	    	calculatrice.pop();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
@@ -99,7 +98,7 @@ public class CalculatorControler {
 	        interfaceCalculatrice.updateHistory(historique);
 	    }
 	    
-	    //Bouton SWAP
+	    // Bouton SWAP
 	    if (buttonIndex == 12) {
 	    	try{calculatrice.swap();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());

@@ -33,7 +33,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	private Stage dialogStage;
 	
 	
-    // Texte en haut de la caulatrice
+    // Texte en haut de la calculatrice
 	private Label ecranLabel;
 	private Label historyLabel;
 	private Label ecranHistorique;
@@ -94,8 +94,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	    return borderPane;
 	}
 
-    // création des buttons
-	// création des buttons
+	// Création des buttons
 	private Button[] createAndSetupButtons() {
 	    // Crée un tableau de boutons de taille 21
 	    Button[] buttons = new Button[21];
@@ -116,7 +115,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	}
 
     
-    // mettre à jour le label
+    // Met à jour le label
 	 public void affiche(String string) {
 	        ecranLabel.setText(string);
 	    }
@@ -124,7 +123,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	 public void afficheResOp(String string) {
 		 double result = Double.parseDouble(string);
 
-		 // Utiliser un format dynamique pour gérer le nombre de décimales
+		 // Récupère la String formatée et affiche
 		 String formattedResult = formatDouble(result).toString();
 		 ecranLabel.setText(formattedResult);
 	 	}
@@ -132,20 +131,20 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	 public String getResOp(String string) {
 		 double result = Double.parseDouble(string);
 
-		 // Utiliser un format dynamique pour gérer le nombre de décimales
+		 // Gère le nb de décimales dynamiquement
 		 String formattedResult = formatDouble(result).toString();
 		 return formattedResult;
 	 }
 
 	 private String formatDouble(double value) {
-		 // Créer un format dynamique en fonction du nombre de décimales
+		 // Gère le nb de décimales dynamiquement
 		 String pattern = "#." + new String(new char[10]).replace('\0', '#'); // Format jusqu'à 10 décimales
 
 		 DecimalFormat decimalFormat = new DecimalFormat(pattern);
 		 return decimalFormat.format(value);
 		}
 
-    
+    // Permet de mettre à jour l'historique après chaque appui de bouton clé
     public void updateHistorique(List<Double> historique) {
         StringBuilder historiqueText = new StringBuilder();
 
@@ -163,7 +162,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     
     
     public void messageErreur(String message) {
-	    // Créer une nouvelle fenêtre de dialogue
+	    // Création d'une nouvelle fenêtre de dialogue
     	dialogStage = new Stage();
     	resetButton.setMaxWidth(Double.MAX_VALUE); // la largeur maximale
 	    resetButton.setPrefHeight(50); // la hauteur
@@ -171,10 +170,10 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         dialogStage.setTitle("Attention Erreur");
     	dialogStage.initOwner(ecranLabel.getScene().getWindow());
        
-    	// Créer un TextFlow pour afficher le texte de manière structurer
+    	// Créer un TextFlow pour afficher le texte de manière structuré
         TextFlow textFlow = new TextFlow();
         textFlow.setPrefSize(400, 130); 
-        textFlow.setTextAlignment(TextAlignment.CENTER); // Centrer le texte
+        textFlow.setTextAlignment(TextAlignment.CENTER);
 
         // Séparer le message en lignes
         String[] lines = message.split("\n"); // saut de ligne comme séparateur
@@ -183,16 +182,17 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         for (String line : lines) {
             Text text = new Text(line);
             text.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-            text.setFill(Color.BLACK); // Couleur du texte
+            text.setFill(Color.BLACK);
             textFlow.getChildren().add(text);
 
             // Ajouter un saut de ligne après chaque ligne du message
             textFlow.getChildren().add(new Text("\n"));
         }
-
+        
+        //Paramètres de la VBox
         VBox vbox = new VBox(textFlow, resetButton);
-        vbox.setAlignment(Pos.CENTER); // Centrer le contenu dans la VBox
-        vbox.setSpacing(100); // Espacement entre les éléments
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setSpacing(100);
 
         Scene dialogScene = new Scene(vbox); 
         dialogStage.setScene(dialogScene);
@@ -212,8 +212,4 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	public void fermeDialogueStage() {
 		dialogStage.close();
 	}
-
-    
 }
-
-
