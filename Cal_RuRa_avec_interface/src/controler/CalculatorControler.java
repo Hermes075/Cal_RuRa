@@ -126,7 +126,7 @@ public class CalculatorControler {
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.afficheResOp(calculatrice.getResultat());
 	    interfaceCalculatrice.updateHistorique(calculatrice.peek3());
-	    }catch (EmptyStackException e) {
+	    }catch (EmptyStackException e) { // gestion des erreurs
 	        interfaceCalculatrice.messageErreur(e.getMessage());
 	    } catch (IllegalArgumentException e) {
 	        interfaceCalculatrice.messageErreur(e.getMessage());
@@ -137,6 +137,8 @@ public class CalculatorControler {
 	    
 	}
 	
+	
+	// on gère ici le boutton ENTER et AC puisqu'ils se ressemblent
 	private void handleRROrAC(boolean clearPile) {
 		String EnCours = calculatrice.getEnCours();
 		if (EnCours.length()==1 && EnCours.contains(".")) {

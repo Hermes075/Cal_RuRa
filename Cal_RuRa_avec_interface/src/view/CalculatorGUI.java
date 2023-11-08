@@ -24,22 +24,22 @@ import javafx.scene.control.Label;
 
 public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
-	private Button[] buttons;
-	private Button resetButton;
+	private Button[] buttons; // contient tout les boutons
+	private Button closeButton; // le close bouton 
 	private Stage dialogStage;
 	
 	
     // Texte en haut de la calculatrice
-	private Label ecranLabel;
-	private Label ecranHistorique;
+	private Label ecranLabel; // le résultat 
+	private Label ecranHistorique; // historique des opérandes
 	
 	public CalculatorGUI() {
 		// Appel au constructeur de la classe mère (Scene) avec une instance de BorderPane et les dimensions    
 		super(new BorderPane(), 400, 500); 
 		// Crée le layout de la calculatrice
 		BorderPane root = createCalculatorLayout();
-		// Créer un bouton "AC" pour réinitialiser
-	    resetButton = new Button("CLOSE");
+		// Créer un bouton "CLOSE" pour réinitialiser
+	    closeButton = new Button("CLOSE");
 	    
 	    // Créer une nouvelle fenêtre de dialogue
     	dialogStage = new Stage();
@@ -129,14 +129,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 		 ecranLabel.setText(formattedResult);
 	 	}
 	 
-	 public String getResOp(String string) {
-		 double result = Double.parseDouble(string);
-
-		 // Gère le nb de décimales dynamiquement
-		 String formattedResult = formatDouble(result).toString();
-		 return formattedResult;
-	 }
-
+	 // pour eviter le pb au moment de la conversion 
 	 private String formatDouble(double value) {
 		 // Gère le nb de décimales dynamiquement
 		 String pattern = "#." + new String(new char[10]).replace('\0', '#'); // Format jusqu'à 10 décimales
@@ -160,12 +153,12 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
     
     
-    
+    // fenetre d'erreurs 
     public void messageErreur(String message) {
 	    // Création d'une nouvelle fenêtre de dialogue
     	dialogStage = new Stage();
-    	resetButton.setMaxWidth(Double.MAX_VALUE); // la largeur maximale
-	    resetButton.setPrefHeight(50); // la hauteur
+    	closeButton.setMaxWidth(Double.MAX_VALUE); // la largeur maximale
+	    closeButton.setPrefHeight(50); // la hauteur
     	dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.setTitle("Attention Erreur");
     	dialogStage.initOwner(ecranLabel.getScene().getWindow());
@@ -190,7 +183,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         }
         
         //Paramètres de la VBox
-        VBox vbox = new VBox(textFlow, resetButton);
+        VBox vbox = new VBox(textFlow, closeButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(100);
 
@@ -198,11 +191,13 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         dialogStage.setScene(dialogScene);
         dialogStage.showAndWait();
     }
+    
+    // des getteurs
     public Button[] getButtons() {
     	return buttons;
     }
     public Button getResetButton() {
-    	return resetButton;
+    	return closeButton;
     }
     public Stage getDialogStage(){
     	return dialogStage;

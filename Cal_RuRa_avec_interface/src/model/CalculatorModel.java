@@ -12,6 +12,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	String enCours = "";
 	Double enCoursD = 0.0;
 	
+	//addition
 	public void add() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -24,6 +25,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	        }
 	}
 	
+	//soustraction
 	public void substract() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -36,7 +38,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	        }
 	}
 
-	
+	//multiplication
 	public void multiply() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -49,6 +51,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	        }
 	}
 	
+	// division
 	public void divide() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -66,7 +69,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	        }
 	}
 
-	
+	// opposition
 	public void opposite() {
 	    try {
 	        if (operande.empty()) {
@@ -81,11 +84,12 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    }
 	}
 
-	
+	//push
 	public void push(Double element) {
 		operande.push(element);
 	}
 	
+	//pop
 	public void pop() {
 	    if (!operande.isEmpty()) {
 	        Double element = operande.pop();
@@ -94,7 +98,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 
 	
-	
+	//clear
 	public void clear() {
 		accu = "";
 		operande.clear();
@@ -127,6 +131,8 @@ public class CalculatorModel implements CalculatorModelInterface{
 		return accu;
 	}
 	
+	
+	//échange les 2 premiers élèments de la liste
 	public void swap(){
 		if (operande.size()>1){
 		Double operande1 = operande.pop();
@@ -138,14 +144,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 		}
 	}
 	
-	public String getOperandeAsString() {
-	    StringBuilder builder = new StringBuilder();
-	    for (Double value : operande) {
-	        builder.append(value);
-	        builder.append("; ");
-	    }
-	    return builder.toString();
-	}
 
 	public void ajoutEnCours(String element) {
 	    if (element.equals(".")) {
@@ -157,9 +155,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    }
 	}
 
-	public void drop() {
-		operande.pop();
-	}
 	
 	public String getAccu() {
 		return accu;
@@ -171,15 +166,15 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    }
 	}
 
-
-public List<Double> peek3() {
-    int operandeSize = operande.size();
-    List<Double> dernieresValeurs = new ArrayList<>();
-    while ( operandeSize>0) {
-        	dernieresValeurs.add(operande.get(operandeSize - 1));
-            operandeSize--;
-    }
-    return dernieresValeurs;
+	//permet de récupérer les opérandes en les retournants 
+	public List<Double> peek3() {
+		int operandeSize = operande.size();
+		List<Double> dernieresValeurs = new ArrayList<>();
+		while ( operandeSize>0) {
+			dernieresValeurs.add(operande.get(operandeSize - 1));
+			operandeSize--;
+		}
+		return dernieresValeurs;
 }}
 
 
