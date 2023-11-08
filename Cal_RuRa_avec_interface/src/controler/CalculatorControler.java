@@ -43,23 +43,20 @@ public class CalculatorControler {
 	        	//Vérification du mode de la calculatrice
 	            calculatrice.ajoutEnCours(String.valueOf(index));
 	            interfaceCalculatrice.affiche(calculatrice.getEnCours());
-	            //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	            interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	        }
 	    }
 
 	    // Si l'index est dans la plage des opérations
 	    if (buttonIndex >= 14 && buttonIndex <= 17 ) {
 	        effectuerOperationSelonIndex(buttonIndex);
-	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	 // Bouton "<--"
 	    if (buttonIndex == 18) {
 	    calculatrice.supprimer();
-	    interfaceCalculatrice.affiche(calculatrice.getEnCours());
-	    String historique = calculatrice.getOperandeAsString();
-        interfaceCalculatrice.updateHistory(historique);
-	    
+	    interfaceCalculatrice.affiche(calculatrice.getEnCours());	    
 	    }
 	    
 	    // Bouton "ENTER"
@@ -70,16 +67,14 @@ public class CalculatorControler {
 	    // Pour le bouton AC
 	    if (buttonIndex == 19) {
 	        handleRROrAC(true);// Effacer la pile
-	        //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    // Bouton +/-
 	    if (buttonIndex == 13) {
 	    	calculatrice.inverseEnCours();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
-		    String historique = calculatrice.getOperandeAsString();
-	        interfaceCalculatrice.updateHistory(historique);
-	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    	
 	    
@@ -87,23 +82,24 @@ public class CalculatorControler {
 	    if (buttonIndex == 11) {
 	    	calculatrice.ajoutEnCours(".");
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
-	    	//interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
 	    // Bouton POP
 	    if (buttonIndex == 10) {
 	    	calculatrice.pop();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
-		    String historique = calculatrice.getOperandeAsString();
-	        interfaceCalculatrice.updateHistory(historique);
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+
 	    }
 	    
 	    // Bouton SWAP
 	    if (buttonIndex == 12) {
 	    	try{calculatrice.swap();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
-		    String historique = calculatrice.getOperandeAsString();
-	        interfaceCalculatrice.updateHistory(historique);}
+	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+
+	    	}
 	    	catch (IllegalArgumentException e) {
 		        interfaceCalculatrice.messageErreur(e.getMessage());
 	    	}
@@ -129,9 +125,7 @@ public class CalculatorControler {
 	    }
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.afficheResOp(calculatrice.getResultat());
-	    String historique = calculatrice.getOperandeAsString();
-        interfaceCalculatrice.updateHistory(historique);
-	    //interfaceCalculatrice.updateHistorique(calculatrice.peek3());
+	    interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }catch (EmptyStackException e) {
 	        interfaceCalculatrice.messageErreur(e.getMessage());
 	    } catch (IllegalArgumentException e) {
@@ -155,7 +149,6 @@ public class CalculatorControler {
 	    if (clearPile) {
 	        calculatrice.clear();
 	    }
-	    String historique = calculatrice.getOperandeAsString();
-        interfaceCalculatrice.updateHistory(historique);
+	    interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	}
 }

@@ -1,6 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EmptyStackException;
+import java.util.List;
 import java.util.Stack;
 
 public class CalculatorModel implements CalculatorModelInterface{
@@ -169,27 +172,19 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    }
 	}
 
-}
 
-/*
-	public List<Double> peek3() {
-	    int accumulateurSize = accumulateur.size();
-	    List<Double> lastThreeValues = new ArrayList<>();
+public List<Double> peek3() {
+    int operandeSize = operande.size();
+    List<Double> dernieresValeurs = new ArrayList<>();
 
-	    // Ajouter des zéros pour remplir la liste si elle contient moins de 3 éléments
-	    while (lastThreeValues.size() < 5) {
-	        if (accumulateurSize > 0) {
-	            lastThreeValues.add(accumulateur.get(accumulateurSize - 1));
-	            accumulateurSize--;
-	        } else {
-	            lastThreeValues.add(0.0); // Ajouter un zéro
-	        }
-	    }
+        if (operandeSize > 0) {
+        	dernieresValeurs.add(operande.get(operandeSize - 1));
+            operandeSize--;
+    }
 
-	    // Inverser la liste pour obtenir les valeurs dans l'ordre correct
-	    Collections.reverse(lastThreeValues);
-	    return lastThreeValues;
-	}
+    // Inverser la liste pour obtenir les valeurs dans l'ordre correct
+    Collections.reverse(dernieresValeurs);
+    return dernieresValeurs;
+}}
 
 
-*/

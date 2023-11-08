@@ -35,7 +35,6 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	
     // Texte en haut de la calculatrice
 	private Label ecranLabel;
-	private Label historyLabel;
 	private Label ecranHistorique;
 	
 	public CalculatorGUI() {
@@ -50,10 +49,6 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     	dialogStage = new Stage();
 		// Associe le layout à la racine de la scène
 		((BorderPane) getRoot()).setCenter(root);
-        historyLabel = new Label("Historique : ");
-        historyLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
-        historyLabel.setAlignment(Pos.CENTER);
-        ((BorderPane) getRoot()).setTop(historyLabel);
         
      // Charger la feuille de style CSS
         String cssPath = getClass().getResource("application.css").toExternalForm();
@@ -155,9 +150,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         ecranHistorique.setText(historiqueText.toString());
     }
     
-    public void updateHistory(String history) {
-        historyLabel.setText("Historique : " + history);
-    }
+
     
     
     
