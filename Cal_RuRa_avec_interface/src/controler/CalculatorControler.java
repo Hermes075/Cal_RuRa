@@ -145,7 +145,11 @@ public class CalculatorControler {
 	}
 	
 	private void handleRROrAC(boolean clearPile) {
-	    calculatrice.push(Double.parseDouble(calculatrice.getEnCours()));
+		String EnCours = calculatrice.getEnCours();
+		if (EnCours.length()==1 && EnCours.contains(".")) {
+			EnCours = "0.0";
+		}
+	    calculatrice.push(Double.parseDouble(EnCours));
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.affiche(calculatrice.getEnCours());
 
