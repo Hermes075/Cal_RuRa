@@ -77,7 +77,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	    gridPane.add(buttons[20], 0, 5); // Ajoute le bouton à la dernière ligne
 
 	    // Ajout de l'écran Historique à droite de l'écran
-	    ecranHistorique = new Label("0.0"); // Créer un Label pour l'historique
+	    ecranHistorique = new Label(""); // Créer un Label pour l'historique
 	    ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 	    ecranHistorique.setTextAlignment(TextAlignment.CENTER);
 	    borderPane.setRight(ecranHistorique);

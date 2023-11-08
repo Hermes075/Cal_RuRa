@@ -176,14 +176,10 @@ public class CalculatorModel implements CalculatorModelInterface{
 public List<Double> peek3() {
     int operandeSize = operande.size();
     List<Double> dernieresValeurs = new ArrayList<>();
-
-        if (operandeSize > 0) {
+    while ( operandeSize>0) {
         	dernieresValeurs.add(operande.get(operandeSize - 1));
             operandeSize--;
     }
-
-    // Inverser la liste pour obtenir les valeurs dans l'ordre correct
-    Collections.reverse(dernieresValeurs);
     return dernieresValeurs;
 }}
 
