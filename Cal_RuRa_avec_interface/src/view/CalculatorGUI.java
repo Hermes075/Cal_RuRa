@@ -81,7 +81,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
 	    ecranHistorique = new Label(""); // Crée un Label pour l'historique
 	    ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-	    ecranHistorique.setTextAlignment(TextAlignment.CENTER);
+	    ecranHistorique.setTextAlignment(TextAlignment.RIGHT);
 
 	    historiqueBox.getChildren().addAll(historiqueLabel, ecranHistorique);
 	    historiqueBox.setSpacing(10);
