@@ -10,12 +10,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBase;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -77,10 +73,20 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	    gridPane.add(buttons[20], 0, 5); // Ajoute le bouton à la dernière ligne
 
 	    // Ajout de l'écran Historique à droite de l'écran
-	    ecranHistorique = new Label(""); // Créer un Label pour l'historique
+	    VBox historiqueBox = new VBox(); // Crée un VBox pour contenir l'historique
+	    historiqueBox.setAlignment(Pos.TOP_CENTER); // Centre le contenu verticalement
+	    Label historiqueLabel = new Label("Pile Operande"); // Crée un Label pour le titre
+	    historiqueLabel.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+	    historiqueLabel.setTextAlignment(TextAlignment.CENTER);
+
+	    ecranHistorique = new Label(""); // Crée un Label pour l'historique
 	    ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 	    ecranHistorique.setTextAlignment(TextAlignment.CENTER);
-	    borderPane.setRight(ecranHistorique);
+
+	    historiqueBox.getChildren().addAll(historiqueLabel, ecranHistorique);
+	    historiqueBox.setSpacing(10);
+
+	    borderPane.setRight(historiqueBox);
 
 	    // Permet au bouton "ENTER" de remplir la dernière ligne
 	    GridPane.setColumnSpan(buttons[20], 4); // Colonne 0 jusqu'à 4 inclus
