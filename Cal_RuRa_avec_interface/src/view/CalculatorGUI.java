@@ -75,7 +75,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	    // Ajout de l'écran Historique à droite de l'écran
 	    VBox historiqueBox = new VBox(); // Crée un VBox pour contenir l'historique
 	    historiqueBox.setAlignment(Pos.TOP_CENTER); // Centre le contenu verticalement
-	    Label historiqueLabel = new Label("Pile Operande"); // Crée un Label pour le titre
+	    Label historiqueLabel = new Label("Pile Opérandes"); // Crée un Label pour le titre
 	    historiqueLabel.setFont(Font.font("Arial", FontWeight.BOLD, 15));
 	    historiqueLabel.setTextAlignment(TextAlignment.CENTER);
 
@@ -148,9 +148,10 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
     // Permet de mettre à jour l'historique après chaque appui de bouton clé
     public void updateHistorique(List<Double> historique) {
         StringBuilder historiqueText = new StringBuilder();
-
         for (Double valeur : historique) {
-            historiqueText.append(valeur).append("\n");
+   		 	String formattedResult = formatDouble(valeur).toString();
+            historiqueText.append(formattedResult);
+            historiqueText.append("\n");
         }
 
         ecranHistorique.setText(historiqueText.toString());
