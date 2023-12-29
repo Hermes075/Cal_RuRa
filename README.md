@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 72e0e41e3abf817627317fe31ca1dd3c562fd049
 # Calculator Application README
 
 ## Overview
