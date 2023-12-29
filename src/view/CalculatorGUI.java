@@ -1,8 +1,8 @@
 package view;
 
+
 import java.util.List;
 import java.text.DecimalFormat;
-
 
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -24,36 +24,33 @@ import javafx.scene.control.Label;
 
 public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
-	private Button[] buttons; // contient tout les boutons
-	private Button closeButton; // le close bouton 
+	private Button[] buttons; // Contains all the buttons
+	private Button closeButton; // Close button
 	private Stage dialogStage;
 	
-	
-    // Texte en haut de la calculatrice
-	private Label ecranLabel; // le résultat 
-	private Label ecranHistorique; // historique des opérandes
+	// Text on top of the calculator
+	private Label ecranLabel; // The result of the operation
+	private Label ecranHistorique; // Operands history stack
 	
 	public CalculatorGUI() {
-		// Appel au constructeur de la classe mère (Scene) avec une instance de BorderPane et les dimensions    
+		// Constructor of the parent class (Scene) with an instance of BorderPane and the dimensions   
 		super(new BorderPane(), 400, 500); 
-		// Crée le layout de la calculatrice
+		// Layout creation of the calculator
 		BorderPane root = createCalculatorLayout();
-		// Créer un bouton "CLOSE" pour réinitialiser
+		// "CLOSE" button to reset
 	    closeButton = new Button("CLOSE");
-	    
-	    // Créer une nouvelle fenêtre de dialogue
+		// New dialog window
     	dialogStage = new Stage();
-		// Associe le layout à la racine de la scène
+		// Associate the layout to the root of the scene
 		((BorderPane) getRoot()).setCenter(root);
-        
-     // Charger la feuille de style CSS
+		// Load the CSS style sheet
         String cssPath = getClass().getResource("application.css").toExternalForm();
         getStylesheets().add(cssPath);
 	}
 
 	private BorderPane createCalculatorLayout() {
 	    BorderPane borderPane = new BorderPane();
-	    ecranLabel = new Label(""); // Créer un Label
+	    ecranLabel = new Label(""); // Create a label for the result
 	    ecranLabel.setFont(Font.font("Arial", FontWeight.BOLD, 40));
 	    ecranLabel.setPrefHeight(200);
 	    borderPane.setTop(ecranLabel);
@@ -61,25 +58,25 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	    GridPane gridPane = new GridPane();
 	    borderPane.setCenter(gridPane);
 
-	    // Création des boutons et ajout des gestionnaires d'événements
+		// Creation of the buttons and addition of the event handlers
 	    buttons = createAndSetupButtons();
 	    gridPane.addColumn(0, buttons[19], buttons[7], buttons[4], buttons[1], buttons[0]);
         gridPane.addColumn(1, buttons[13], buttons[8], buttons[5], buttons[2], buttons[11]);
         gridPane.addColumn(2, buttons[12], buttons[9], buttons[6], buttons[3], buttons[10]);
         gridPane.addColumn(3, buttons[17], buttons[16], buttons[15], buttons[14], buttons[18]);
 
-	    // Crée le bouton "ENTER" pour remplir la dernière ligne
+		// Create the "ENTER" button to fill the last line
         buttons[20].setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-	    gridPane.add(buttons[20], 0, 5); // Ajoute le bouton à la dernière ligne
+	    gridPane.add(buttons[20], 0, 5); // Add the button to the gridPane
 
-	    // Ajout de l'écran Historique à droite de l'écran
-	    VBox historiqueBox = new VBox(); // Crée un VBox pour contenir l'historique
-	    historiqueBox.setAlignment(Pos.TOP_CENTER); // Centre le contenu verticalement
-	    Label historiqueLabel = new Label("Pile Opérandes"); // Crée un Label pour le titre
+		// Add the history screen to the right of the screen
+	    VBox historiqueBox = new VBox(); // Create a VBox to contain the history
+	    historiqueBox.setAlignment(Pos.TOP_CENTER); // Center the VBox vertically
+	    Label historiqueLabel = new Label("Operands Stack"); // Create a Label for the history
 	    historiqueLabel.setFont(Font.font("Arial", FontWeight.BOLD, 15));
 	    historiqueLabel.setTextAlignment(TextAlignment.CENTER);
 
-	    ecranHistorique = new Label(""); // Crée un Label pour l'historique
+	    ecranHistorique = new Label(""); // Create a Label for the history
 	    ecranHistorique.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 	    ecranHistorique.setTextAlignment(TextAlignment.RIGHT);
 
@@ -88,16 +85,15 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 
 	    borderPane.setRight(historiqueBox);
 
-	    // Permet au bouton "ENTER" de remplir la dernière ligne
-	    GridPane.setColumnSpan(buttons[20], 4); // Colonne 0 jusqu'à 4 inclus
-	    GridPane.setHalignment(buttons[20], HPos.CENTER); // Centre le bouton horizontalement
-
+		// Allows the "ENTER" button to fill the last line
+	    GridPane.setColumnSpan(buttons[20], 4); // Column 0 to 4 inclusive
+	    GridPane.setHalignment(buttons[20], HPos.CENTER); // Centers the button horizontally
 	    return borderPane;
 	}
 
-	// Création des buttons
+	// Buttons creation
 	private Button[] createAndSetupButtons() {
-	    // Crée un tableau de boutons de taille 21
+		// Create an array of buttons of size 21
 	    Button[] buttons = new Button[21];
 	    String[] buttonLabels = {
 	        "0", "1", "2", "3", "4",
@@ -105,7 +101,6 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	        "POP", ".", "SWAP", "+/-", "+",
 	        "-", "x", "/", "<--", "AC","ENTER"
 	    };
-
 	    for (int i = 0; i < 21; i++) {
 	        buttons[i] = new Button(buttonLabels[i]);
 	        buttons[i].setPrefSize(100, 100);
@@ -115,8 +110,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	    return buttons;
 	}
 
-    
-    // Met à jour le label
+	// Update the label
 	 public void affiche(String string) {
 	        ecranLabel.setText(string);
 	    }
@@ -124,21 +118,21 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
 	 public void afficheResOp(String string) {
 		 double result = Double.parseDouble(string);
 
-		 // Récupère la String formatée et affiche
+		 // Get the formatted String and display
 		 String formattedResult = formatDouble(result).toString();
 		 ecranLabel.setText(formattedResult);
 	 	}
 	 
-	 // pour eviter le pb au moment de la conversion 
+	 // To avoid the problem at the time of conversion
 	 private String formatDouble(double value) {
-		 // Gère le nb de décimales dynamiquement
-		 String pattern = "#." + new String(new char[10]).replace('\0', '#'); // Format jusqu'à 10 décimales
+		 // Handles the number of decimals dynamically
+		 String pattern = "#." + new String(new char[10]).replace('\0', '#'); // Up to 10 decimals
 
 		 DecimalFormat decimalFormat = new DecimalFormat(pattern);
 		 return decimalFormat.format(value);
 		}
 
-    // Permet de mettre à jour l'historique après chaque appui de bouton clé
+	// Allows to update the history after each key button press
     public void updateHistorique(List<Double> historique) {
         StringBuilder historiqueText = new StringBuilder();
         for (Double valeur : historique) {
@@ -150,39 +144,36 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         ecranHistorique.setText(historiqueText.toString());
     }
     
-
-    
-    
-    // fenetre d'erreurs 
+	// Error windows
     public void messageErreur(String message) {
-	    // Création d'une nouvelle fenêtre de dialogue
+		// Creation of a new dialog window
     	dialogStage = new Stage();
-    	closeButton.setMaxWidth(Double.MAX_VALUE); // la largeur maximale
-	    closeButton.setPrefHeight(50); // la hauteur
+    	closeButton.setMaxWidth(Double.MAX_VALUE); // The maximum width
+	    closeButton.setPrefHeight(50); // Height
     	dialogStage.initModality(Modality.WINDOW_MODAL);
-        dialogStage.setTitle("Attention Erreur");
+        dialogStage.setTitle("Error Warning");
     	dialogStage.initOwner(ecranLabel.getScene().getWindow());
        
-    	// Créer un TextFlow pour afficher le texte de manière structuré
+		// Create a TextFlow to display the text in a structured way
         TextFlow textFlow = new TextFlow();
         textFlow.setPrefSize(400, 130); 
         textFlow.setTextAlignment(TextAlignment.CENTER);
 
-        // Séparer le message en lignes
-        String[] lines = message.split("\n"); // saut de ligne comme séparateur
+		// Divide the message into lines
+        String[] lines = message.split("\n"); // Line break as separator
 
-        // Créer un Text pour chaque ligne du message
+		// Create a Text for each line of the message
         for (String line : lines) {
             Text text = new Text(line);
             text.setFont(Font.font("Arial", FontWeight.BOLD, 20));
             text.setFill(Color.BLACK);
             textFlow.getChildren().add(text);
 
-            // Ajouter un saut de ligne après chaque ligne du message
+			// Add a line break after each line of the message
             textFlow.getChildren().add(new Text("\n"));
         }
         
-        //Paramètres de la VBox
+		// VBox parameters
         VBox vbox = new VBox(textFlow, closeButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(100);
@@ -192,7 +183,7 @@ public class CalculatorGUI extends Scene implements CalculatorGUIInterface {
         dialogStage.showAndWait();
     }
     
-    // des getteurs
+	// Getters
     public Button[] getButtons() {
     	return buttons;
     }

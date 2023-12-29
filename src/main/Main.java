@@ -12,12 +12,11 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) {
-    	//Association avec le controller 
+        // Association with the controller
     	CalculatorGUI gui = new CalculatorGUI();
-    	CalculatorControler controller = new CalculatorControler(gui); // on crée le controlleur pour la premiere fois
+    	CalculatorControler controller = new CalculatorControler(gui); // We create the controller for the first time
         primaryStage.setScene(gui);
-        primaryStage.setTitle("Calculatrice");
+        primaryStage.setTitle("Calculator");
         primaryStage.show();
     }
-
 }

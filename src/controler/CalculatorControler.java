@@ -11,14 +11,14 @@ import view.CalculatorGUI;
 
 public class CalculatorControler {
 	private CalculatorGUI interfaceCalculatrice; // Graphical User Interface
-	private CalculatorModel calculatrice; // La calculatrice fera les calculs
+	private CalculatorModel calculatrice; // The calculator will do the calculations
 		
 	public CalculatorControler (CalculatorGUI interfaceCalculatrice) {
-		calculatrice = new CalculatorModel(); // On crée une calculatrice quand on lance pour la premiere fois
+		calculatrice = new CalculatorModel(); // We create a calculator when we launch it for the first time
 		this.interfaceCalculatrice = interfaceCalculatrice;
 		Button[] buttons = this.interfaceCalculatrice.getButtons();
 		
-		// Gestionnaire d'événements pour chaque bouton
+		// Event handler for each button
         for (int i = 0; i < buttons.length; i++) {
             final int buttonIndex = i;
             buttons[i].setOnAction(e -> handleButtonClick(buttonIndex));
@@ -26,7 +26,7 @@ public class CalculatorControler {
         
 
         this.interfaceCalculatrice.getResetButton().setOnAction(e -> {
-        	// Fermer la fenêtre de dialogue
+        	// Close the dialog window
             this.interfaceCalculatrice.fermeDialogueStage();
         });
 
@@ -36,56 +36,55 @@ public class CalculatorControler {
 	
 	public void handleButtonClick(int buttonIndex) {
 		
-	    // Liste des index correspondants aux chiffres sur l'interface
+	    // Index list for the numbers on the interface
 	    List<Integer> indexChiffres = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 	    for (int index : indexChiffres) {
 	        if (index == buttonIndex) {
-	        	//Vérification du mode de la calculatrice
+				// Calculator mode verification
 	            calculatrice.ajoutEnCours(String.valueOf(index));
 	            interfaceCalculatrice.affiche(calculatrice.getEnCours());
 	            interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	        }
 	    }
 
-	    // Si l'index est dans la plage des opérations
+		// If the index is in the range of operations
 	    if (buttonIndex >= 14 && buttonIndex <= 17 ) {
 	        effectuerOperationSelonIndex(buttonIndex);
 	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
-	 // Bouton "<--"
+	 // Button "<--"
 	    if (buttonIndex == 18) {
 	    calculatrice.supprimer();
 	    interfaceCalculatrice.affiche(calculatrice.getEnCours());	    
 	    }
 	    
-	    // Bouton "ENTER"
+	    // Button "ENTER"
 	    if (buttonIndex == 20) {
 	    handleRROrAC(false);
 	    }
 
-	    // Pour le bouton AC
+	    // Button "AC"
 	    if (buttonIndex == 19) {
 	        handleRROrAC(true);// Effacer la pile
 	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
-	    // Bouton +/-
+	    // Button "+/-"
 	    if (buttonIndex == 13) {
 	    	calculatrice.inverseEnCours();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    	
-	    
-	    // Bouton .
+	    // Button "."
 	    if (buttonIndex == 11) {
 	    	calculatrice.ajoutEnCours(".");
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 	    	interfaceCalculatrice.updateHistorique(calculatrice.peek3());
 	    }
 	    
-	    // Bouton POP
+	    // Button "POP"
 	    if (buttonIndex == 10) {
 	    	calculatrice.pop();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
@@ -93,12 +92,11 @@ public class CalculatorControler {
 
 	    }
 	    
-	    // Bouton SWAP
+	    // Button "SWAP"
 	    if (buttonIndex == 12) {
 	    	try{calculatrice.swap();
 	    	interfaceCalculatrice.affiche(calculatrice.getEnCours());
 	        interfaceCalculatrice.updateHistorique(calculatrice.peek3());
-
 	    	}
 	    	catch (IllegalArgumentException e) {
 		        interfaceCalculatrice.messageErreur(e.getMessage());
@@ -106,7 +104,7 @@ public class CalculatorControler {
 	    } 
 	}
 
-	//Permet de ne pas répéter les mêmes lignes de code pour chaque opération
+	// Allows not to repeat the same lines of code for each operation
 	private void effectuerOperationSelonIndex(int buttonIndex) {
 	    try {
 		switch (buttonIndex) {
@@ -126,7 +124,7 @@ public class CalculatorControler {
 	    calculatrice.clearEnCours();
 	    interfaceCalculatrice.afficheResOp(calculatrice.getResultat());
 	    interfaceCalculatrice.updateHistorique(calculatrice.peek3());
-	    }catch (EmptyStackException e) { // gestion des erreurs
+	    }catch (EmptyStackException e) { // Error handling
 	        interfaceCalculatrice.messageErreur(e.getMessage());
 	    } catch (IllegalArgumentException e) {
 	        interfaceCalculatrice.messageErreur(e.getMessage());
@@ -137,8 +135,7 @@ public class CalculatorControler {
 	    
 	}
 	
-	
-	// on gère ici le boutton ENTER et AC puisqu'ils se ressemblent
+	// Handle the ENTER and AC buttons since they are similar
 	private void handleRROrAC(boolean clearPile) {
 		String EnCours = calculatrice.getEnCours();
 		if (EnCours.length()==1 && EnCours.contains(".")) {

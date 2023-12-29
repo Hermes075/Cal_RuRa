@@ -12,7 +12,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	String enCours = "";
 	Double enCoursD = 0.0;
 	
-	//addition
+	// Addition
 	public void add() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -21,11 +21,11 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            operande.push(resultat);
 	            accu = resultat.toString();
 	        } else {
-	            throw new IllegalArgumentException("Pas assez d'opérandes pour l'addition.");
+	            throw new IllegalArgumentException(" Not enough operands for addition.");
 	        }
 	}
 	
-	//soustraction
+	// Substraction
 	public void substract() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -34,11 +34,11 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            operande.push(resultat);
 	            accu = resultat.toString();
 	        } else {
-	            throw new IllegalArgumentException("Pas assez d'opérandes pour la soustraction.");
+	            throw new IllegalArgumentException("Not enough operands for substraction.");
 	        }
 	}
 
-	//multiplication
+	// Multiplication
 	public void multiply() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -47,11 +47,11 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            operande.push(resultat);
 	            accu = resultat.toString();
 	        } else {
-	            throw new IllegalArgumentException("Pas assez d'opérandes pour la multiplication.");
+	            throw new IllegalArgumentException("Not enough operands for multiplication.");
 	        }
 	}
 	
-	// division
+	// Division
 	public void divide() {
 	        if (operande.size() >= 2) {
 	            Double operande2 = operande.pop();
@@ -62,14 +62,14 @@ public class CalculatorModel implements CalculatorModelInterface{
 	                operande.push(resultat);
 	                accu = resultat.toString();
 	            } else {
-	                throw new ArithmeticException("Attention : Division par 0");
+	                throw new ArithmeticException("Warning: Division by zero.");
 	            }
 	        } else {
-	            throw new IllegalArgumentException("Pas assez d'opérandes pour la division.");
+	            throw new IllegalArgumentException("Not enough operands for division.");
 	        }
 	}
 
-	// opposition
+	// Opposition
 	public void opposite() {
 	    try {
 	        if (operande.empty()) {
@@ -80,16 +80,17 @@ public class CalculatorModel implements CalculatorModelInterface{
 	            accu = element.toString();
 	        }
 	    } catch (EmptyStackException e) {
-	        System.err.println("Erreur d'opposition : " + e.getMessage());
+	        System.err.println("Opposition error: " + e.getMessage());
 	    }
 	}
 
-	//push
+	// STACK IMPLEMENTATION
+	// Stack push
 	public void push(Double element) {
 		operande.push(element);
 	}
 	
-	//pop
+	// Stack pop
 	public void pop() {
 	    if (!operande.isEmpty()) {
 	        Double element = operande.pop();
@@ -98,7 +99,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 
 	
-	//clear
+	// Stack clear
 	public void clear() {
 		accu = "";
 		operande.clear();
@@ -131,8 +132,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 		return accu;
 	}
 	
-	
-	//échange les 2 premiers élèments de la liste
+	// Exchange the two first elements of the list
 	public void swap(){
 		if (operande.size()>1){
 		Double operande1 = operande.pop();
@@ -140,11 +140,10 @@ public class CalculatorModel implements CalculatorModelInterface{
         operande.add(operande1);
         operande.add(operande2);}
 		else {
-			throw new IllegalArgumentException("Pas assez d'opérandes pour la swap");	
+			throw new IllegalArgumentException("Not enough operands for swap.");	
 		}
 	}
 	
-
 	public void ajoutEnCours(String element) {
 	    if (element.equals(".")) {
 	        if (!enCours.contains(".")) {
@@ -155,7 +154,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    }
 	}
 
-	
 	public String getAccu() {
 		return accu;
 	}
@@ -166,7 +164,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	    }
 	}
 
-	//permet de récupérer les opérandes en les retournants 
+	// Allows to retrieve the operands by returning them 
 	public List<Double> peek3() {
 		int operandeSize = operande.size();
 		List<Double> dernieresValeurs = new ArrayList<>();
@@ -175,6 +173,5 @@ public class CalculatorModel implements CalculatorModelInterface{
 			operandeSize--;
 		}
 		return dernieresValeurs;
-}}
-
-
+}
+}

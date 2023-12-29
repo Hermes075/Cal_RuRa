@@ -1,55 +1,55 @@
-/* Style de l'application */
+/* App style */
 .root {
-    -fx-background-color: #e3e3e3; /* Couleur de fond */
+    -fx-background-color: #e3e3e3; /* Background color */
     -fx-padding: 10;
 }
 
-/* Style de l'écran principal */
+/* Main screen style */
 #ecranLabel {
     -fx-font-size: 2em;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-text-fill: #333333; /* Text color */
 }
 
-/* Style de l'historique */
+/* History style */
 #ecranHistorique {
     -fx-font-size: 1em;
     -fx-font-weight: bold;
-    -fx-text-fill: #666666; /* Couleur du texte */
+    -fx-text-fill: #666666; /* Text color */
 }
 
-/* Style des boutons */
+/* Button style */
 .button {
     -fx-pref-width: 100px;
     -fx-pref-height: 100px;
     -fx-font-size: 1.5em;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333; /* Couleur du texte */
-    -fx-background-color: #ffffff; /* Couleur de fond par défaut */
+    -fx-text-fill: #333333; /* Text color */
+    -fx-background-color: #ffffff; /* Default background color */
 }
 
-/* Effets de survol des boutons */
+/* Button hovering effect */
 .button:hover {
-    -fx-background-color: #e0e0e0; /* Couleur de fond au survol */
-    -fx-cursor: hand; /* Curseur de la main au survol */
+    -fx-background-color: #e0e0e0; /* Hovering background color */
+    -fx-cursor: hand; /* Hand hovering cursor */
 }
 
-/* Effets de clic des boutons */
+/* Button click effect */
 .button:pressed {
-    -fx-background-color: #b0b0b0; /* Couleur de fond en cliquant */
+    -fx-background-color: #b0b0b0; /* Background clicking color */
 }
 
-/* Style du bouton "AC" */
+/* "AC" button style */
 #resetButton {
     -fx-pref-width: 100px;
     -fx-pref-height: 50px;
     -fx-font-size: 1em;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
-    -fx-background-color: #ff4444; /* Couleur de fond spéciale */
+    -fx-background-color: #ff4444; /* Special background color */
 }
 
-/* Effets de survol et de clic pour le bouton "AC" */
+/* "AC" hovering and clicking effects */
 #resetButton:hover {
     -fx-background-color: #ff6666;
 }
@@ -58,9 +58,9 @@
     -fx-background-color: #ff0000;
 }
 
-/* Style du label d'historique */
+/* History label style */
 #historyLabel {
     -fx-font-size: 1.2em;
     -fx-font-weight: bold;
-    -fx-text-fill: #666666; /* Couleur du texte */
+    -fx-text-fill: #666666; /* Text color */
 }
