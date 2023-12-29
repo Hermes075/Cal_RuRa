@@ -10,7 +10,7 @@ import view.CalculatorGUI;
 
 
 public class CalculatorControler {
-	private CalculatorGUI interfaceCalculatrice; // Interface graphique de la calculatrice
+	private CalculatorGUI interfaceCalculatrice; // Graphical User Interface
 	private CalculatorModel calculatrice; // La calculatrice fera les calculs
 		
 	public CalculatorControler (CalculatorGUI interfaceCalculatrice) {
