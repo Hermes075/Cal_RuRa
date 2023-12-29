@@ -3,6 +3,8 @@
 ## Overview
 This Calculator Application is a Java-based program designed to perform basic arithmetic operations. It follows the MVC (Model-View-Controller) architecture, ensuring a clean separation of concerns between user interface, business logic, and data handling.
 
+**Reverse Polish Notation (RPN)** is a method of mathematical expression that differs significantly from the conventional algebraic notation. In standard notation, operators are typically placed between operands, like in the expression `3 + 4`. In contrast, RPN places operators after their operands. For the same expression in RPN, it would be written as `3 4 +`. This format eliminates the need for parentheses to define the order of operations. In an RPN system, the calculation is performed in the order the elements appear, working from left to right, applying each operator to the operands that immediately precede it. This makes RPN particularly efficient and reduces the cognitive load in complex calculations, as the order of operations is explicit and does not rely on operator precedence rules. RPN is often used in scientific and financial calculators due to its efficiency in handling complex expressions.
+
 ## Getting Started
 To run this game, ensure you have Java and JavaFX installed on your system.
 
